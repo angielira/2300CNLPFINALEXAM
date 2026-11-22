@@ -36,7 +36,7 @@
 |---|---|---|
 | `task-planning` | Split work, assign agents, track progress | orchestrator, meta-agent |
 | `agent-authoring` | Write subagents, skills and knowledge notes | meta-agent, orchestrator |
-| `nltk-text-cleaning` | Tokenize, lower-case, remove stopwords, lemmatize | nltk-expert, ml-engineer, pyodide-engineer, build-pipeline-engineer |
+| `nltk-text-cleaning` | Tokenize, lower-case, remove stopwords (keep negations), stem | nltk-expert, ml-engineer, pyodide-engineer, build-pipeline-engineer |
 | `vader-sentiment` | Score frustration and comments with VADER | nltk-expert, feedback-loop-engineer, nlp-evaluator |
 | `frequency-and-collocations` | FreqDist and bigram collocations for common problems | nltk-expert, data-viz-expert |
 | `spacy-pipeline` | Load `en_core_web_sm`, run it in batches | spacy-expert, build-pipeline-engineer |

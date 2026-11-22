@@ -1,0 +1,170 @@
+/* ==========================================================================
+   HelpMate design tokens (Iris, ux-accessibility-designer)
+   Load order in every page:  design-tokens.css, app.css, (insights.css optional)
+   Font: add this to <head> of every page (not @import, it blocks rendering):
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+   CONTRAST (WCAG 1.4.3 text >= 4.5:1, 1.4.11 non-text >= 3:1)
+   Ratios use the WCAG relative-luminance formula. They were worked out by hand
+   to two decimals because this session had no shell. tests/test_contrast.py
+   re-computes every pair below from this file; run it to confirm.
+
+   Brand colors as given, and where they can be used:
+     navy   #14213D on bg #FFF8F0 ......... 15.16   body text
+     navy   #14213D on white .............. 15.97
+     blue   #2F7BF5 on bg ................. 3.78    decoration / icons / large text only (fails 4.5)
+     blue   #2F7BF5 with white text ....... 3.98    DO NOT put small white text on it
+     coral  #FF6A4D on bg ................. 2.69    decoration only (fails even 3:1; pair with a text label)
+     coral  #FF6A4D with navy text ........ 5.64    ok: navy text on a coral fill
+     coral  #E04E2C on bg ................. 3.77    FAILS 4.5 for small text (brand note says it is safe; it is not).
+                                                    Large text (>= 24px or 18.5px bold) only.
+     teal   #12A889 on bg ................. 2.85    decoration only
+     teal   #12A889 with navy text ........ 5.32    ok: navy text on a teal fill
+     purple #8A5CF6 on bg ................. 4.03    FAILS 4.5 for small text; large text only
+     purple #8A5CF6 with white text ....... 4.25    FAILS 4.5
+
+   Text-safe darker shades (use for any text, for filled buttons with white text,
+   and for icons/borders that must reach 3:1):
+     blue-ink   #1D5FD0   on bg 5.54   white-on-it 5.83
+     coral-ink  #C2410C   on bg 4.91   white-on-it 5.18
+     teal-ink   #0B7A63   on bg 5.01   white-on-it 5.28
+     purple-ink #6D3FD6   on bg 5.98   white-on-it 6.30
+     amber-ink  #B45309   on bg 4.77   (rating stars; also >= 3:1 as a graphic)
+     muted      #4A5568   on bg 7.14   secondary text
+     line-strong #7A8296  on bg 3.65   on white 3.84   (borders of inputs and chips, 1.4.11)
+
+   Badge pairs (text on fill):
+     NLTK            navy #14213D on gold #FFD166 ... 11.08
+     spaCy           white on magenta #A31D6B ........ 7.13
+     Neural network  white on navy #14213D .......... 15.97
+     NLTK + spaCy    navy on white, navy border ..... 15.97
+   Format tints (card backgrounds) are all lighter than L 0.80, so navy text on them is >= 12:1.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand ---- */
+  --navy: #14213D;
+  --blue: #2F7BF5;
+  --coral: #FF6A4D;
+  --teal: #12A889;
+  --purple: #8A5CF6;
+  --bg: #FFF8F0;
+  --white: #FFFFFF;
+
+  /* ---- Text-safe shades (see table above) ---- */
+  --blue-ink: #1D5FD0;
+  --coral-ink: #C2410C;
+  --teal-ink: #0B7A63;
+  --purple-ink: #6D3FD6;
+  --amber-ink: #B45309;
+  --coral-text-brand: #E04E2C;       /* brand note value; large text only, see table */
+
+  /* ---- Tints: soft card backgrounds for each format ---- */
+  --blue-tint: #E6F0FE;
+  --coral-tint: #FFE9E3;
+  --teal-tint: #DDF5EF;
+  --purple-tint: #EFE9FE;
+  --amber-tint: #FFF1D6;
+  --cream-deep: #FFEEDB;             /* slightly deeper than bg for bands */
+
+  /* ---- Neutral roles ---- */
+  --text: var(--navy);
+  --text-muted: #4A5568;
+  --text-on-dark: #FFF8F0;
+  --surface: var(--white);
+  --page: var(--bg);
+  --line: #E7DCCB;                   /* decorative dividers only */
+  --line-strong: #7A8296;            /* control borders, >= 3:1 */
+  --link: var(--blue-ink);
+  --link-hover: #174CA8;
+
+  /* ---- Format roles (one place to change) ---- */
+  --see-bright: var(--blue);   --see-ink: var(--blue-ink);     --see-tint: var(--blue-tint);
+  --hear-bright: var(--coral); --hear-ink: var(--coral-ink);   --hear-tint: var(--coral-tint);
+  --try-bright: var(--teal);   --try-ink: var(--teal-ink);     --try-tint: var(--teal-tint);
+  --read-bright: var(--purple);--read-ink: var(--purple-ink);  --read-tint: var(--purple-tint);
+
+  /* ---- Buttons ---- */
+  --btn-primary-bg: var(--navy);
+  --btn-primary-bg-hover: #0D172B;
+  --btn-primary-text: var(--white);
+
+  /* ---- Status (always shown with an icon and words, never color alone) ---- */
+  --ok-ink: var(--teal-ink);     --ok-tint: var(--teal-tint);
+  --warn-ink: #8A4B00;           --warn-tint: var(--amber-tint);   /* #8A4B00 on #FFF1D6 is about 6.0 */
+  --error-ink: #B3261E;          --error-tint: #FDE8E4;            /* #B3261E on #FDE8E4 is about 5.5 */
+
+  /* ---- Library badges: text label always present ---- */
+  --badge-nltk-bg: #FFD166;      --badge-nltk-text: var(--navy);   --badge-nltk-border: var(--navy);
+  --badge-spacy-bg: #A31D6B;     --badge-spacy-text: #FFFFFF;      --badge-spacy-border: #A31D6B;
+  --badge-nn-bg: var(--navy);    --badge-nn-text: #FFFFFF;         --badge-nn-border: var(--navy);
+  --badge-both-bg: #FFFFFF;      --badge-both-text: var(--navy);   --badge-both-border: var(--navy);
+  --badge-dot-a: #FFD166;        --badge-dot-b: #A31D6B;           /* decorative dots on the combined badge */
+
+  /* ---- Chart palette (each >= 3:1 on white; always add labels or patterns) ---- */
+  --chart-1: var(--blue-ink);
+  --chart-2: var(--coral-ink);
+  --chart-3: var(--teal-ink);
+  --chart-4: var(--purple-ink);
+  --chart-5: var(--amber-ink);
+  --chart-grid: #CBBFAE;         /* decorative gridlines */
+
+  /* ---- Focus ring (navy on cream 15:1; white version for dark backgrounds) ---- */
+  --focus-color: var(--navy);
+  --focus-color-on-dark: #FFFFFF;
+  --focus-width: 3px;
+  --focus-offset: 3px;
+
+  /* ---- Type: Nunito, base 18px for comfortable reading ---- */
+  --font: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fw-body: 600;
+  --fw-strong: 700;
+  --fw-head: 800;
+  --fw-display: 900;
+  --fs-xs: 0.875rem;     /* 14px: badges and tiny labels only, always bold */
+  --fs-sm: 1rem;         /* 16px */
+  --fs-base: 1.125rem;   /* 18px body */
+  --fs-md: 1.25rem;      /* 20px */
+  --fs-lg: 1.5rem;       /* 24px, counts as large text */
+  --fs-xl: 1.875rem;     /* 30px */
+  --fs-2xl: 2.25rem;     /* 36px */
+  --fs-3xl: 2.75rem;     /* 44px, hero on desktop */
+  --lh-tight: 1.2;
+  --lh-body: 1.6;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --gutter: 1rem;                    /* page side padding at 360px */
+
+  /* ---- Radius ---- */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows (soft, warm navy) ---- */
+  --shadow-1: 0 1px 2px rgba(20, 33, 61, 0.08), 0 4px 12px rgba(20, 33, 61, 0.08);
+  --shadow-2: 0 2px 4px rgba(20, 33, 61, 0.10), 0 10px 28px rgba(20, 33, 61, 0.14);
+  --shadow-panel: -8px 0 32px rgba(20, 33, 61, 0.22);
+
+  /* ---- Layout and size ---- */
+  --target: 44px;                    /* minimum touch/click size (WCAG 2.5.5 target) */
+  --target-comfy: 52px;
+  --content-width: 46rem;            /* about 736px reading column */
+  --wide-width: 72rem;
+  --panel-width: 28rem;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 220ms;
+}

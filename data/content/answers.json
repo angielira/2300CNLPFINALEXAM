@@ -1,0 +1,332 @@
+{
+ "items": [
+  {
+   "category": "printer",
+   "title": "Let's get your printer printing",
+   "summary": "Most printer problems come down to power, paper or the connection.",
+   "calm_intro": "It's okay. Printers are fussy for everyone. We'll fix this together, one small step at a time.",
+   "when_to_get_help": "If none of this works, ask someone you trust or call the printer maker's help line. You did nothing wrong.",
+   "tags": ["printer", "paper", "ink", "queue"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Check the power", "detail": "Look for a small light on the printer. If it is dark, press the power button and check the plug.", "image": null, "alt": ""},
+    {"n": 2, "label": "Look at the paper", "detail": "Open the paper tray. You should see paper lying flat, with no crumpled sheets stuck inside.", "image": null, "alt": ""},
+    {"n": 3, "label": "Read the screen or lights", "detail": "Look for a message or a blinking light. It often says 'low ink' or 'paper jam'.", "image": null, "alt": ""},
+    {"n": 4, "label": "Check the connection", "detail": "For Wi-Fi printers, see that the Wi-Fi light is steady. For a cable, push both ends in firmly.", "image": null, "alt": ""},
+    {"n": 5, "label": "Clear the waiting list", "detail": "On your computer, open the printer's queue. That is the list of jobs waiting. Cancel any stuck job.", "image": null, "alt": ""},
+    {"n": 6, "label": "Restart and try again", "detail": "Turn the printer off, wait ten seconds, turn it on. Restart your computer too, then print one page.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Check the printer is switched on and its light is lit.",
+    "Step two. Open the paper tray and make sure there is flat paper, with nothing stuck.",
+    "Step three. Look at the printer's small screen or lights for a message.",
+    "Step four. Check the Wi-Fi light is steady, or push the cable in at both ends.",
+    "Step five. On your computer, open the printer queue and cancel any stuck job.",
+    "Step six. Turn the printer off, wait ten seconds and turn it on. Then print one page."
+   ], "outro": "Well done. If none of this works, ask someone you trust or call the printer maker's help line. You did nothing wrong."},
+   "try_it": {"steps": [
+    {"id": "printer-try-1", "text": "The printer light is on."},
+    {"id": "printer-try-2", "text": "The tray has flat paper and no jam."},
+    {"id": "printer-try-3", "text": "I read any message on the printer."},
+    {"id": "printer-try-4", "text": "The printer is connected by Wi-Fi or cable."},
+    {"id": "printer-try-5", "text": "I cancelled stuck jobs in the queue."},
+    {"id": "printer-try-6", "text": "I restarted the printer and printed a test page."}
+   ]},
+   "read_it": {"print_title": "Printer checklist", "checklist": [
+    "Printer plugged in and switched on",
+    "Paper loaded flat, no jam",
+    "Any printer message read",
+    "Wi-Fi light steady or cable firm",
+    "Stuck jobs cancelled in the queue",
+    "Printer and computer restarted, test page printed"
+   ]}
+  },
+  {
+   "category": "email",
+   "title": "Let's get your email working",
+   "summary": "Most email trouble is a lost internet connection, a stuck message or an old password.",
+   "calm_intro": "Take a breath. Your emails are almost never lost. We'll look at this together, step by step.",
+   "when_to_get_help": "If you still can't send or get mail, contact your email provider's help page or someone you trust. Never share your password with anyone who calls you.",
+   "tags": ["email", "outbox", "inbox", "password"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Check you are online", "detail": "Open any website. If it loads, your internet is working. If not, fix Wi-Fi first.", "image": null, "alt": ""},
+    {"n": 2, "label": "Look in the Outbox", "detail": "The Outbox is where messages wait to be sent. If yours is there, it has not left yet.", "image": null, "alt": ""},
+    {"n": 3, "label": "Check the address and size", "detail": "Make sure the address has an @ and no spaces. Very large attachments can block sending.", "image": null, "alt": ""},
+    {"n": 4, "label": "Look in Spam and Junk", "detail": "Missing mail is often in the Spam or Junk folder. Open it and look for the message.", "image": null, "alt": ""},
+    {"n": 5, "label": "Try the email website", "detail": "Sign in on your provider's website in a browser. If it works there, the app is the problem.", "image": null, "alt": ""},
+    {"n": 6, "label": "Restart the email app", "detail": "Close the email app fully, then open it again. If asked, update your password on the official page.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Open any website to check your internet works.",
+    "Step two. Look in the Outbox folder for your waiting message.",
+    "Step three. Check the address has an at sign and no spaces. Try a smaller attachment.",
+    "Step four. Open the Spam or Junk folder and look for missing mail.",
+    "Step five. Sign in on your email provider's website in a browser.",
+    "Step six. Close the email app and open it again. Then try sending once more."
+   ], "outro": "Well done. If you still can't send or get mail, contact your email provider's help page or someone you trust. Never share your password with anyone who calls you."},
+   "try_it": {"steps": [
+    {"id": "email-try-1", "text": "A website opens, so I am online."},
+    {"id": "email-try-2", "text": "I checked the Outbox folder."},
+    {"id": "email-try-3", "text": "The address looks right and the attachment is small."},
+    {"id": "email-try-4", "text": "I looked in Spam and Junk."},
+    {"id": "email-try-5", "text": "I tried my email on the website."},
+    {"id": "email-try-6", "text": "I restarted the email app and tried again."}
+   ]},
+   "read_it": {"print_title": "Email checklist", "checklist": [
+    "Internet works (a website opens)",
+    "Outbox folder checked",
+    "Address correct, attachment not too big",
+    "Spam and Junk folder checked",
+    "Email tried on provider's website",
+    "Email app restarted, tried again"
+   ]}
+  },
+  {
+   "category": "wifi",
+   "title": "Let's get you back online",
+   "summary": "Most Wi-Fi problems are fixed by restarting the router, which is the box that brings internet to your home.",
+   "calm_intro": "No worries. Internet drops happen to everyone. We'll get you back online one small step at a time.",
+   "when_to_get_help": "If the internet is still down after the restart, call your internet company. It may be an outage in your area.",
+   "tags": ["wifi", "router", "internet", "network"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Check Wi-Fi is on", "detail": "On your device, look for the Wi-Fi symbol. Make sure Wi-Fi is turned on and airplane mode is off.", "image": null, "alt": ""},
+    {"n": 2, "label": "Try another device", "detail": "Try a phone or another computer. If it also can't connect, the problem is the router or the internet company.", "image": null, "alt": ""},
+    {"n": 3, "label": "Look at the router lights", "detail": "The router is the small box with blinking lights. Steady lights are good. Red or no lights mean trouble.", "image": null, "alt": ""},
+    {"n": 4, "label": "Restart the router", "detail": "Unplug the router, wait 30 seconds, plug it back in. Wait two minutes for the lights to settle.", "image": null, "alt": ""},
+    {"n": 5, "label": "Reconnect to your network", "detail": "Choose your Wi-Fi name in the list and enter the password. The password is often on a sticker on the router.", "image": null, "alt": ""},
+    {"n": 6, "label": "Move closer", "detail": "Walls and distance weaken Wi-Fi. Move closer to the router and try again.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Check that Wi-Fi is on and airplane mode is off.",
+    "Step two. Try another device. See if it can get online.",
+    "Step three. Look at the router lights. Note if any are red or off.",
+    "Step four. Unplug the router, wait thirty seconds, then plug it in. Wait two minutes.",
+    "Step five. Pick your Wi-Fi name and type the password. It may be on the router sticker.",
+    "Step six. Move closer to the router and try once more."
+   ], "outro": "Well done. If the internet is still down after the restart, call your internet company. It may be an outage in your area."},
+   "try_it": {"steps": [
+    {"id": "wifi-try-1", "text": "Wi-Fi is on and airplane mode is off."},
+    {"id": "wifi-try-2", "text": "I tested another device."},
+    {"id": "wifi-try-3", "text": "I looked at the router lights."},
+    {"id": "wifi-try-4", "text": "I restarted the router and waited two minutes."},
+    {"id": "wifi-try-5", "text": "I reconnected to my Wi-Fi name."},
+    {"id": "wifi-try-6", "text": "I moved closer and tried again."}
+   ]},
+   "read_it": {"print_title": "Wi-Fi checklist", "checklist": [
+    "Wi-Fi on, airplane mode off",
+    "Another device tested",
+    "Router lights checked",
+    "Router off 30 seconds, then on, waited 2 minutes",
+    "Reconnected with the Wi-Fi password",
+    "Moved closer to router, tried again"
+   ]}
+  },
+  {
+   "category": "passwords",
+   "title": "Let's get you back into your account",
+   "summary": "Forgotten or rejected passwords can be reset safely on the official website.",
+   "calm_intro": "This happens to everyone. Passwords are hard to remember. We'll sort it out together, safely.",
+   "when_to_get_help": "If the reset email never arrives or you are locked out, use the service's official help page. Never share your password or codes with anyone who contacts you first.",
+   "tags": ["password", "login", "account", "reset"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Check the keyboard", "detail": "Make sure Caps Lock is off and the right language is chosen. Type slowly.", "image": null, "alt": ""},
+    {"n": 2, "label": "Check the username", "detail": "Is it your full email address? A small spelling slip stops you getting in.", "image": null, "alt": ""},
+    {"n": 3, "label": "Show the password", "detail": "Click the little eye symbol to see what you typed. Fix any slip.", "image": null, "alt": ""},
+    {"n": 4, "label": "Use the official reset", "detail": "Go to the real website by typing its address yourself. Click 'Forgot password'.", "image": null, "alt": ""},
+    {"n": 5, "label": "Check your email for the link", "detail": "Look in your inbox and Spam for the reset message. Click the link in it, and pick a new password.", "image": null, "alt": ""},
+    {"n": 6, "label": "Save it safely", "detail": "Use a long password with a few random words. Keep it in a password manager or a safe place at home.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Check Caps Lock is off. Then type your password slowly.",
+    "Step two. Check your username or email address is spelled right.",
+    "Step three. Click the eye symbol to see what you typed.",
+    "Step four. Go to the official website. Click Forgot password.",
+    "Step five. Find the reset email and click its link. Pick a new password.",
+    "Step six. Choose a long password. Store it in a safe place."
+   ], "outro": "Well done. If the reset email never arrives or you are locked out, use the service's official help page. Never share your password or codes with anyone who contacts you first."},
+   "try_it": {"steps": [
+    {"id": "passwords-try-1", "text": "Caps Lock is off and I typed slowly."},
+    {"id": "passwords-try-2", "text": "My username is spelled correctly."},
+    {"id": "passwords-try-3", "text": "I looked at what I typed."},
+    {"id": "passwords-try-4", "text": "I clicked Forgot password on the official site."},
+    {"id": "passwords-try-5", "text": "I got the reset email and chose a new password."},
+    {"id": "passwords-try-6", "text": "I saved my new password safely."}
+   ]},
+   "read_it": {"print_title": "Password checklist", "checklist": [
+    "Caps Lock off, typed slowly",
+    "Username spelled correctly",
+    "Typed password checked with the eye symbol",
+    "Used Forgot password on the official site",
+    "Reset email found, new password chosen",
+    "New password long and stored safely"
+   ]}
+  },
+  {
+   "category": "slow",
+   "title": "Let's speed up your computer",
+   "summary": "A slow computer usually needs a restart, fewer open programs or more free space.",
+   "calm_intro": "It's frustrating when things crawl. We'll try a few gentle fixes together, with nothing risky.",
+   "when_to_get_help": "If it is still very slow after these steps, ask a trusted person or the maker's support. An older computer may need a repair shop.",
+   "tags": ["computer", "slow", "restart", "storage"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Save your work", "detail": "Save any open files first. That keeps your work safe before a restart.", "image": null, "alt": ""},
+    {"n": 2, "label": "Restart the computer", "detail": "Use Restart from the Start or Apple menu. This clears many small problems.", "image": null, "alt": ""},
+    {"n": 3, "label": "Close what you don't need", "detail": "Close extra windows and browser tabs. Each open one uses memory, which is your computer's short-term workspace.", "image": null, "alt": ""},
+    {"n": 4, "label": "Check free space", "detail": "Open Settings, then Storage. If the drive is almost full, delete old downloads or move photos elsewhere.", "image": null, "alt": ""},
+    {"n": 5, "label": "Install updates", "detail": "Open Settings and look for Update. Install updates, then restart again.", "image": null, "alt": ""},
+    {"n": 6, "label": "Check the plug and heat", "detail": "Make sure a laptop is plugged in and its vents are not covered. Heat slows things down.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Save your work before anything else.",
+    "Step two. Use the Restart option from the Start or Apple menu.",
+    "Step three. Close extra windows and browser tabs you don't need.",
+    "Step four. Open Settings, then Storage, and see how full the drive is.",
+    "Step five. Look for updates in Settings. Install them and restart.",
+    "Step six. Plug in a laptop and keep its vents uncovered."
+   ], "outro": "Well done. If it is still very slow after these steps, ask a trusted person or the maker's support. An older computer may need a repair shop."},
+   "try_it": {"steps": [
+    {"id": "slow-try-1", "text": "I saved my open work."},
+    {"id": "slow-try-2", "text": "I restarted the computer."},
+    {"id": "slow-try-3", "text": "I closed extra windows and tabs."},
+    {"id": "slow-try-4", "text": "I checked how much storage is free."},
+    {"id": "slow-try-5", "text": "I installed any updates."},
+    {"id": "slow-try-6", "text": "The computer is plugged in and not hot."}
+   ]},
+   "read_it": {"print_title": "Slow computer checklist", "checklist": [
+    "Open work saved",
+    "Computer restarted (not just sleep)",
+    "Extra windows and tabs closed",
+    "Storage checked, old downloads removed",
+    "Updates installed",
+    "Plugged in, vents clear"
+   ]}
+  },
+  {
+   "category": "phone_apps",
+   "title": "Let's fix your phone or app",
+   "summary": "Most phone and app problems are fixed by closing the app, restarting the phone or updating.",
+   "calm_intro": "It's alright. Phones act up sometimes. We'll try the gentle fixes first, together.",
+   "when_to_get_help": "If the app still fails, contact the app's help page or your phone maker. Don't install apps from outside the official store.",
+   "tags": ["phone", "app", "update", "restart"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Close the app", "detail": "Swipe the app away from the list of open apps. Then open it again.", "image": null, "alt": ""},
+    {"n": 2, "label": "Restart the phone", "detail": "Hold the power button and choose Restart. Wait for it to start again.", "image": null, "alt": ""},
+    {"n": 3, "label": "Check the internet", "detail": "Open a website. Many apps need Wi-Fi or mobile data to work.", "image": null, "alt": ""},
+    {"n": 4, "label": "Update the app", "detail": "Open the official app store. Search for the app. Tap Update if you see it.", "image": null, "alt": ""},
+    {"n": 5, "label": "Free up space", "detail": "Open Settings, then Storage. If it is full, delete things you don't need, like old videos.", "image": null, "alt": ""},
+    {"n": 6, "label": "Remove and reinstall", "detail": "As a last step, delete the app and install it again from the official store. Your account keeps your data in most apps.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Close the app fully, then open it again.",
+    "Step two. Hold the power button and choose Restart.",
+    "Step three. Check that a website opens on your phone.",
+    "Step four. Open the app store and update the app if you can.",
+    "Step five. Open Settings, then Storage, and clear old items.",
+    "Step six. Delete the app. Install it again from the official store."
+   ], "outro": "Well done. If the app still fails, contact the app's help page or your phone maker. Don't install apps from outside the official store."},
+   "try_it": {"steps": [
+    {"id": "phone_apps-try-1", "text": "I closed the app and opened it again."},
+    {"id": "phone_apps-try-2", "text": "I restarted the phone."},
+    {"id": "phone_apps-try-3", "text": "The internet works on my phone."},
+    {"id": "phone_apps-try-4", "text": "I updated the app."},
+    {"id": "phone_apps-try-5", "text": "I checked my phone storage."},
+    {"id": "phone_apps-try-6", "text": "I reinstalled the app from the official store."}
+   ]},
+   "read_it": {"print_title": "Phone and apps checklist", "checklist": [
+    "App closed fully and reopened",
+    "Phone restarted",
+    "Internet on the phone works",
+    "App updated in the official store",
+    "Phone storage checked",
+    "App reinstalled from official store"
+   ]}
+  },
+  {
+   "category": "files",
+   "title": "Let's find or free up your files",
+   "summary": "Missing files are often in the Recycle Bin, Downloads, or a recent list. Full storage can be cleared safely.",
+   "calm_intro": "Don't worry. Files are usually still there. We'll look in the usual places together.",
+   "when_to_get_help": "If a file is still missing, ask someone you trust or your cloud service's help page. Stop saving new things to that drive until then.",
+   "tags": ["file", "folder", "storage", "search"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Use the search box", "detail": "Click the search box on your computer. Type part of the file's name.", "image": null, "alt": ""},
+    {"n": 2, "label": "Check Downloads", "detail": "Open the Downloads folder. Saved files from the internet often land there.", "image": null, "alt": ""},
+    {"n": 3, "label": "Look in Recent", "detail": "Open Recent in File Explorer or Finder. It lists files you opened lately.", "image": null, "alt": ""},
+    {"n": 4, "label": "Check the Recycle Bin", "detail": "Open the Recycle Bin or Trash. Right-click your file and choose Restore.", "image": null, "alt": ""},
+    {"n": 5, "label": "Check your cloud folder", "detail": "If you use OneDrive, iCloud or Google Drive, sign in on their website and search there.", "image": null, "alt": ""},
+    {"n": 6, "label": "Make more space", "detail": "Empty the Recycle Bin and delete old downloads you no longer need. Copy photos to a cloud or a drive first.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Type part of the file's name in the search box.",
+    "Step two. Open the Downloads folder and look for your file.",
+    "Step three. Open the Recent list and look for your file.",
+    "Step four. Open the Recycle Bin. Restore the file if you see it.",
+    "Step five. Sign in to your cloud storage website and search there.",
+    "Step six. Empty the Recycle Bin. Delete old downloads you no longer need."
+   ], "outro": "Well done. If a file is still missing, ask someone you trust or your cloud service's help page. Stop saving new things to that drive until then."},
+   "try_it": {"steps": [
+    {"id": "files-try-1", "text": "I searched for the file name."},
+    {"id": "files-try-2", "text": "I checked the Downloads folder."},
+    {"id": "files-try-3", "text": "I looked in the Recent list."},
+    {"id": "files-try-4", "text": "I checked the Recycle Bin."},
+    {"id": "files-try-5", "text": "I looked in my cloud storage."},
+    {"id": "files-try-6", "text": "I freed some space safely."}
+   ]},
+   "read_it": {"print_title": "Files and storage checklist", "checklist": [
+    "Searched by part of the file name",
+    "Downloads folder checked",
+    "Recent list checked",
+    "Recycle Bin or Trash checked",
+    "Cloud storage checked",
+    "Space freed (copies kept first)"
+   ]}
+  },
+  {
+   "category": "video_calls",
+   "title": "Let's get your video call working",
+   "summary": "Most call trouble is a muted microphone, a covered camera or the wrong device chosen in the app.",
+   "calm_intro": "It's okay. Everyone has call trouble sometimes. We'll check the basics, one small step at a time.",
+   "when_to_get_help": "If it still fails, tell the host and join by phone if possible. Or ask someone you trust to help.",
+   "tags": ["video", "camera", "microphone", "call"],
+   "format_rank": ["see_it", "try_it", "hear_it", "read_it"],
+   "see_it": {"steps": [
+    {"n": 1, "label": "Check the mute buttons", "detail": "In the call, find the microphone and camera buttons. A line through them means they are off. Click to turn them on.", "image": null, "alt": ""},
+    {"n": 2, "label": "Check the camera cover", "detail": "Some laptops have a slide cover or a key that switches off the camera. Make sure it is open.", "image": null, "alt": ""},
+    {"n": 3, "label": "Pick the right devices", "detail": "Open the call's settings. Choose the right microphone, speaker and camera from the lists.", "image": null, "alt": ""},
+    {"n": 4, "label": "Allow access", "detail": "Your browser may ask to use your camera and microphone. Click Allow.", "image": null, "alt": ""},
+    {"n": 5, "label": "Check the internet", "detail": "Close other tabs and streaming. Move closer to the router, or switch off the camera to save bandwidth.", "image": null, "alt": ""},
+    {"n": 6, "label": "Leave and rejoin", "detail": "Leave the call, wait a moment, and click the invite link again. Restart the app if needed.", "image": null, "alt": ""}
+   ]},
+   "hear_it": {"intro": "Here is what we will do. Go at your own pace. You can pause any time.", "script": [
+    "Step one. Find the microphone and camera buttons in the call. Turn them on.",
+    "Step two. Check the camera cover is open.",
+    "Step three. In the call settings, choose your microphone, speaker and camera.",
+    "Step four. If asked, click Allow for camera and microphone.",
+    "Step five. Close other tabs. Move closer to your router.",
+    "Step six. Leave the call and rejoin using the invite link."
+   ], "outro": "Well done. If it still fails, tell the host and join by phone if possible. Or ask someone you trust to help."},
+   "try_it": {"steps": [
+    {"id": "video_calls-try-1", "text": "The microphone and camera are on."},
+    {"id": "video_calls-try-2", "text": "The camera is uncovered."},
+    {"id": "video_calls-try-3", "text": "I chose the right devices."},
+    {"id": "video_calls-try-4", "text": "I allowed camera and microphone access."},
+    {"id": "video_calls-try-5", "text": "I closed extra tabs and my connection is good."},
+    {"id": "video_calls-try-6", "text": "I left and rejoined the call."}
+   ]},
+   "read_it": {"print_title": "Video call checklist", "checklist": [
+    "Microphone and camera buttons are on",
+    "Camera cover open",
+    "Correct microphone, speaker and camera chosen",
+    "Camera and microphone access allowed",
+    "Extra tabs closed, connection good",
+    "Left and rejoined the call"
+   ]}
+  }
+ ]
+}

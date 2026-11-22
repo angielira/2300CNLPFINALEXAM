@@ -1,0 +1,406 @@
+{
+ "sample": true,
+ "note": "FAKE SAMPLE RATINGS written by Tally (dataset-curator) for tests and offline builds. They are not real user feedback. Used only when no Netlify token is set.",
+ "items": [
+  {
+   "id": "sample-001",
+   "created_at": "2026-11-03T08:00:00Z",
+   "stars": 5,
+   "comment": "Clear steps and the printer was working in two minutes.",
+   "question": "why wont my printer print",
+   "category": "printer",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-002",
+   "created_at": "2026-11-04T15:13:00Z",
+   "stars": 4,
+   "comment": "Short and calm. Liked it.",
+   "question": "printer says offline",
+   "category": "printer",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-003",
+   "created_at": "2026-11-05T10:26:00Z",
+   "stars": 2,
+   "comment": "Too many words. I just wanted one answer.",
+   "question": "my wifi keeps dropping",
+   "category": "wifi",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-004",
+   "created_at": "2026-11-06T17:39:00Z",
+   "stars": 5,
+   "comment": "The voice reading helped me while I fixed it.",
+   "question": "outlook wont send my emails",
+   "category": "email",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-005",
+   "created_at": "2026-11-07T12:52:00Z",
+   "stars": 1,
+   "comment": "Nothing worked for me, the steps did not match my screen.",
+   "question": "printer jammed again!!",
+   "category": "printer",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-006",
+   "created_at": "2026-11-08T19:05:00Z",
+   "stars": 3,
+   "comment": "Okay. Could be shorter.",
+   "question": "computer is really slow",
+   "category": "slow",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-007",
+   "created_at": "2026-11-09T14:18:00Z",
+   "stars": 4,
+   "comment": "Found my password reset. Thanks.",
+   "question": "forgot my login password",
+   "category": "passwords",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-008",
+   "created_at": "2026-11-10T09:31:00Z",
+   "stars": 5,
+   "comment": "The picture helped a lot, I can see where the button is.",
+   "question": "how do I connect to the wifi",
+   "category": "wifi",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-009",
+   "created_at": "2026-11-11T16:44:00Z",
+   "stars": 2,
+   "comment": "Did not help with the camera. Still black.",
+   "question": "zoom shows black screen",
+   "category": "video_calls",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-010",
+   "created_at": "2026-11-12T11:57:00Z",
+   "stars": 4,
+   "comment": "Good. The tone was calm and it understood me.",
+   "question": "my phone keeps crashing",
+   "category": "phone_apps",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-011",
+   "created_at": "2026-11-13T18:10:00Z",
+   "stars": 3,
+   "comment": "Average. I needed a second try.",
+   "question": "where did my file go",
+   "category": "files",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-012",
+   "created_at": "2026-11-14T13:23:00Z",
+   "stars": 5,
+   "comment": "Perfect for my mum, she followed it step by step.",
+   "question": "computer keeps freezing",
+   "category": "slow",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-013",
+   "created_at": "2026-11-15T08:36:00Z",
+   "stars": 1,
+   "comment": "Useless, the link did not open.",
+   "question": "email won't open on iphone",
+   "category": "email",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-014",
+   "created_at": "2026-11-16T15:49:00Z",
+   "stars": 4,
+   "comment": "Liked the checklist, I printed it.",
+   "question": "printer colours wrong",
+   "category": "printer",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-015",
+   "created_at": "2026-11-17T10:02:00Z",
+   "stars": 5,
+   "comment": "Fixed the Teams mic in one go.",
+   "question": "teams cant hear me",
+   "category": "video_calls",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-016",
+   "created_at": "2026-11-18T17:15:00Z",
+   "stars": 3,
+   "comment": "Fine but I didn't understand step 3.",
+   "question": "how to reset my password",
+   "category": "passwords",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-017",
+   "created_at": "2026-11-19T12:28:00Z",
+   "stars": 2,
+   "comment": "Confusing. Too many technical words.",
+   "question": "wifi slow in the bedroom",
+   "category": "wifi",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-018",
+   "created_at": "2026-11-20T19:41:00Z",
+   "stars": 4,
+   "comment": "Good tips about deleting big files.",
+   "question": "hard drive is full",
+   "category": "files",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-019",
+   "created_at": "2026-11-03T14:54:00Z",
+   "stars": 5,
+   "comment": "Works well. The app icon was easy to find.",
+   "question": "delete an app I dont use",
+   "category": "phone_apps",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-020",
+   "created_at": "2026-11-04T09:07:00Z",
+   "stars": 1,
+   "comment": "Still not working after all of it. Really annoyed.",
+   "question": "password keeps saying wrong",
+   "category": "passwords",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-021",
+   "created_at": "2026-11-05T16:20:00Z",
+   "stars": 4,
+   "comment": "Nice and friendly.",
+   "question": "outlook asks password every hour",
+   "category": "email",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-022",
+   "created_at": "2026-11-06T11:33:00Z",
+   "stars": 3,
+   "comment": "Helpful, but the answer came too late.",
+   "question": "my pc is so slow",
+   "category": "slow",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-023",
+   "created_at": "2026-11-07T18:46:00Z",
+   "stars": 5,
+   "comment": "This saved my presentation, thank you.",
+   "question": "zoom wont let me share screen",
+   "category": "video_calls",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-024",
+   "created_at": "2026-11-08T13:59:00Z",
+   "stars": 2,
+   "comment": "Printer answer was wrong for my model.",
+   "question": "hp printer offline",
+   "category": "printer",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-025",
+   "created_at": "2026-11-09T08:12:00Z",
+   "stars": 4,
+   "comment": "Got my iPhone to stop crashing.",
+   "question": "iphone crashing",
+   "category": "phone_apps",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-026",
+   "created_at": "2026-11-10T15:25:00Z",
+   "stars": 5,
+   "comment": "Super clear, love the colours.",
+   "question": "wifi drops at night",
+   "category": "wifi",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-027",
+   "created_at": "2026-11-11T10:38:00Z",
+   "stars": 3,
+   "comment": "Ok. The voice was a bit fast.",
+   "question": "onedrive not syncing",
+   "category": "files",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-028",
+   "created_at": "2026-11-12T17:51:00Z",
+   "stars": 1,
+   "comment": "Did not fix anything. Wasted my time.",
+   "question": "email wont send attachments",
+   "category": "email",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-029",
+   "created_at": "2026-11-13T12:04:00Z",
+   "stars": 4,
+   "comment": "I liked seeing the steps in a list.",
+   "question": "mac disk full",
+   "category": "files",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-030",
+   "created_at": "2026-11-14T19:17:00Z",
+   "stars": 2,
+   "comment": "The password answer did not match my bank.",
+   "question": "bank app login",
+   "category": "passwords",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-031",
+   "created_at": "2026-11-15T14:30:00Z",
+   "stars": 5,
+   "comment": "Excellent. Calm and easy.",
+   "question": "camera on teams not working",
+   "category": "video_calls",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-032",
+   "created_at": "2026-11-16T09:43:00Z",
+   "stars": 4,
+   "comment": "Good, though I would like more pictures.",
+   "question": "printer grinding noise",
+   "category": "printer",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-033",
+   "created_at": "2026-11-17T16:56:00Z",
+   "stars": 3,
+   "comment": "It was OK. Not sure it helped.",
+   "question": "computer blue screen",
+   "category": "slow",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-034",
+   "created_at": "2026-11-18T11:09:00Z",
+   "stars": 5,
+   "comment": "Clear and quick. I used the Try it steps.",
+   "question": "whatsapp voice messages",
+   "category": "phone_apps",
+   "format": "try_it",
+   "sample": true
+  },
+  {
+   "id": "sample-035",
+   "created_at": "2026-11-19T18:22:00Z",
+   "stars": 2,
+   "comment": "Confusing. Wrong category for me.",
+   "question": "router light is orange",
+   "category": "wifi",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-036",
+   "created_at": "2026-11-20T13:35:00Z",
+   "stars": 4,
+   "comment": "Helpful, the sign in tips worked.",
+   "question": "microsoft account locked",
+   "category": "passwords",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-037",
+   "created_at": "2026-11-03T08:48:00Z",
+   "stars": 5,
+   "comment": "Really pleased, my grandson is impressed too.",
+   "question": "tv has no camera for zoom",
+   "category": "video_calls",
+   "format": "hear_it",
+   "sample": true
+  },
+  {
+   "id": "sample-038",
+   "created_at": "2026-11-04T15:01:00Z",
+   "stars": 3,
+   "comment": "Fine, a bit long for a small problem.",
+   "question": "gmail attachment too big",
+   "category": "email",
+   "format": "read_it",
+   "sample": true
+  },
+  {
+   "id": "sample-039",
+   "created_at": "2026-11-05T10:14:00Z",
+   "stars": 4,
+   "comment": "Nice colours, easy to read.",
+   "question": "ipad app is blank",
+   "category": "phone_apps",
+   "format": "see_it",
+   "sample": true
+  },
+  {
+   "id": "sample-040",
+   "created_at": "2026-11-06T17:27:00Z",
+   "stars": 2,
+   "comment": "Did not work the first time. Tried twice.",
+   "question": "external drive not showing",
+   "category": "files",
+   "format": "try_it",
+   "sample": true
+  }
+ ]
+}

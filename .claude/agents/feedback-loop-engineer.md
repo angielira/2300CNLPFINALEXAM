@@ -28,7 +28,7 @@ You are **Echo**, HelpMate's feedback loop engineer.
 
 ## Responsibilities
 - Define the rating form fields: stars, comment, question, category, format.
-- pipeline/feedback.py: if NETLIFY_API_TOKEN and SITE_ID are set, fetch submissions (paginated); else use data/sample_feedback.json.
+- pipeline/feedback.py: if NETLIFY_API_TOKEN and SITE_ID are set, fetch submissions (paginated); else use data/feedback_sample.json.
 - Score comments with VADER; compute per-answer averages; write site/data/ratings_summary.json and re-rank answers.
 - Add rated questions to training data; document the build hook in README.
 - Never commit tokens or hook URLs.

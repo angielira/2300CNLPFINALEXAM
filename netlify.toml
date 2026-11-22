@@ -1,0 +1,33 @@
+# HelpMate deploy settings. No secrets here: NETLIFY_API_TOKEN, SITE_ID and BUILD_HOOK_URL
+# live in Netlify's environment variables (see reports/deploy.md).
+
+[build]
+  command = "pip install -r requirements.txt && python -m spacy download en_core_web_sm && python pipeline/build.py"
+  publish = "site"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+[functions]
+  directory = "netlify/functions"
+
+# Security headers for every page. No Content-Security-Policy on purpose:
+# Pyodide loads from cdn.jsdelivr.net and needs wasm and eval, so a strict CSP
+# would break the live "Ask HelpMate" box.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Build output that changes on every rebuild: always check with the server.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# NLTK files change rarely: cache for one week.
+[[headers]]
+  for = "/nltk_data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

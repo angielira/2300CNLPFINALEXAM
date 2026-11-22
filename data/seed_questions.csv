@@ -1,0 +1,241 @@
+id,text,category,frustrated,source,split
+s001,The email on my phone shows the same message 5 times,email,0,seed,train
+s002,My Windows password was changed by my office and now my old one doesn't work,passwords,0,seed,train
+s003,ink cartridge says empty but i just put a brand new one in!!!,printer,1,seed,train
+s004,My laptop keeps asking me to sign in to the wifi but there is no sign in page,wifi,0,seed,train
+s005,"the caps lock is on and I keep typing my password wrong, how do I tell",passwords,0,seed,train
+s006,I want to move my photos from iCloud to a folder on my laptop without losing them,files,0,seed,train
+s007,how do i make a backup of my whole laptop so I don't lose everything if it breaks,files,0,seed,train
+s008,"the computer says ""low memory"" even when I've closed everything",slow,1,seed,train
+s009,Can my grandchildren see me on a video call through the TV? My TV has no webcam.,video_calls,0,seed,train
+s010,"I need to forward all my old emails to my new Gmail account, how?",email,0,seed,train
+s011,"Task Manager says disk 100% all the time, what does that mean",slow,0,seed,train
+s012,"My Excel spreadsheet lost all its formulas after I saved it, is it gone?",files,0,seed,train
+s013,I dont know why my printer isnt working after the update. I am so tired of this.,printer,1,seed,train
+s014,"my modem has 5 lights and only one is green, is that bad",wifi,0,seed,test
+s015,why does my laptop ask for a password when I wake it up from sleep,passwords,0,seed,test
+s016,why is my laptop so loud and slow when I'm just writing a Word document,slow,0,seed,train
+s017,"Printer error 0x000003eb on my work PC, IT said to ask you",printer,0,seed,train
+s018,"Windows is freezing every time I open Excel, the mouse just stops",slow,0,seed,train
+s019,"My PC says ""the file is in use by another program"" and won't let me delete it",files,1,seed,train
+s020,the file explorer is BLANK when I open my Downloads folder,files,1,seed,train
+s021,WhatsApp won't send voice messages on my Android. Why?,phone_apps,0,seed,train
+s022,"I'm fed up, the TikTok app crashes on my phone EVERY SINGLE TIME",phone_apps,1,seed,train
+s023,The Xfinity box keeps restarting and then the internet is dead again,wifi,1,seed,train
+s024,Why is my PC so slow when I open more than two tabs?,slow,0,seed,train
+s025,"Chromebook has been slow for weeks, is there a way to speed it up",slow,0,seed,train
+s026,When I log in to Zoom on my new HP laptop it says the camera is not detected,video_calls,0,seed,train
+s027,my tablet connects to the wifi but Safari says cannot open the page,wifi,0,seed,train
+s028,"Teams says ""you were removed from the meeting"" every time I join from home",video_calls,1,seed,train
+s029,"My shared folder on the office network says ""You need permission"" for every file",files,0,seed,train
+s030,Can someone explain what two-factor login means? my bank just started asking for it,passwords,0,seed,train
+s031,"The app store says ""Couldn't connect"" every time I try to download anything",phone_apps,1,seed,train
+s032,The internet is super slow but only in the bedroom,wifi,0,seed,train
+s033,My ethernet cable is plugged in but the network icon has a yellow triangle,wifi,0,seed,train
+s034,My Teams calendar invite says it's a video call but there's no link,video_calls,0,seed,train
+s035,"print queue is stuck, every job says ""Error - printing"" and I cant cancel them",printer,1,seed,train
+s036,"I just want to see my doctor on a video call, the link in the text message doesn't open on my phone and I've been trying since breakfast so I'm so stressed",video_calls,1,seed,train
+s037,"Every site wants a different password, how do I keep track without writing them on paper",passwords,0,seed,train
+s038,my printouts are coming out faint and grey even with new ink,printer,0,seed,train
+s039,"The zip file I downloaded won't open, it asks for a password I never got",files,0,seed,train
+s040,I just want to stop typing my password every five minutes on my laptop,passwords,0,seed,train
+s041,"the screen freezes for like 30 seconds and then comes back, over and over",slow,1,seed,test
+s042,"My Epson printer prints everything with green lines, what do I do",printer,0,seed,train
+s043,How do I share my screen on Google Meet? the button is missing,video_calls,0,seed,train
+s044,"my emails wont send from outlook, they just sit in the outbox",email,0,seed,train
+s045,my Outlook calendar invites are not showing up in my email,email,0,seed,train
+s046,"Zoom says ""you are not connected to audio"" and I can't hear anyone",video_calls,0,seed,train
+s047,Can I use Face ID to unlock my Windows laptop?,passwords,0,seed,test
+s048,Internet is fine on the computer but Zoom says no network. I don't understand,wifi,0,seed,test
+s049,Canon printer not connecting to wifi after i changed my router,printer,0,seed,test
+s050,I deleted a photo folder by accident. Is there a way to get it back from the recycle bin?,files,0,seed,train
+s051,my computer is SOOO slow it takes five minutes to open a web page,slow,1,seed,train
+s052,"my email keeps asking me to confirm my identity every hour, is this a scam??",email,1,seed,train
+s053,I clicked print in Word and NOTHING came out of the printer. Nothing!!,printer,1,seed,test
+s054,"My Mac is spinning the rainbow wheel all day long, I'm losing my mind",slow,1,seed,train
+s055,"my wifi keeps dropping every ten minutes, it's so annoying",wifi,1,seed,train
+s056,why does my printer keep printing blank pages,printer,0,seed,test
+s057,The printer is printing the page upside down and really small.,printer,0,seed,train
+s058,the wifi is fine on my phone but my smart TV can't get on,wifi,0,seed,train
+s059,the laptop has been slow since the last windows update,slow,0,seed,test
+s060,Can I move my apps to the SD card on my phone? Mine says full,phone_apps,0,seed,train
+s061,"this computer is useless, it can't even open my email without freezing!!!",slow,1,seed,train
+s062,Windows says 0x80070005 access denied when I try to copy files to the new drive,files,1,seed,train
+s063,My Apple ID is asking for a verification code but my phone number changed,passwords,0,seed,test
+s064,"I accidentally renamed all my files to random letters, PLEASE tell me how to undo that",files,1,seed,test
+s065,printer is jammed AGAIN!! paper is not even in there,printer,1,seed,train
+s066,How do I delete an app on my Samsung phone that I don't use?,phone_apps,0,seed,train
+s067,My video calls keep dropping when my son streams movies on the same wifi,video_calls,0,seed,train
+s068,The internet on my Android keeps switching off and on,wifi,0,seed,train
+s069,"the login page keeps saying ""your account is locked"" and I did nothing!!!",passwords,1,seed,train
+s070,"the mouse lags and clicks take a second to respond, it's driving me nuts",slow,1,seed,train
+s071,My son's gaming PC lags when I'm on Teams in the background,slow,0,seed,test
+s072,I can receive emails but people say they never get mine. Is my outgoing server set wrong,email,0,seed,train
+s073,How do I log out of my Gmail on the shared family computer?,passwords,0,seed,train
+s074,"My kids downloaded a game and now my phone is full of ads, how do I get rid of it?",phone_apps,0,seed,train
+s075,"Error ""DNS_PROBE_FINISHED_NO_INTERNET"" in Chrome, what does that mean",wifi,0,seed,train
+s076,Why are the emails from my sister going to my spam folder every single time!!,email,1,seed,test
+s077,PRINTER IS USELESS I HAVE A REPORT DUE IN ONE HOUR,printer,1,seed,train
+s078,"I moved house and the wifi is gone, the router says it's looking for the cable",wifi,0,seed,test
+s079,"how do I turn on background blur in Zoom, mine looks like a messy room",video_calls,0,seed,train
+s080,how do I change my wifi password on the router,wifi,0,seed,train
+s081,"Outlook keeps asking for my password over and over and over. I type it in, it works for ten minutes, then it asks again, and my boss keeps asking why I missed the morning emails",email,1,seed,test
+s082,"my printer wont print anything, it just blinks orange",printer,0,seed,train
+s083,Can I join a video call from my phone and laptop at the same time?,video_calls,0,seed,train
+s084,Can you help me organise the 400 pictures from my wedding? They're a mess,files,0,seed,train
+s085,"my computer's hard drive has only 2% left, what can I delete safely",files,0,seed,train
+s086,"I accidentally deleted an email from my boss, can I get it back from Outlook?",email,0,seed,train
+s087,Why does my phone keep asking me to update the same app every day?!,phone_apps,1,seed,train
+s088,My Word file says it's read only and I can't save my changes,files,0,seed,train
+s089,"please tell me why the internet cuts out when it rains, it's making me crazy",wifi,1,seed,train
+s090,my email on the iPhone isn't getting new messages since yesterday,email,0,seed,train
+s091,my Zoom call keeps freezing and nobody can hear me,video_calls,1,seed,test
+s092,"Google Maps keeps saying ""no location found"" even with GPS on",phone_apps,0,seed,train
+s093,Chrome wants to save my password but I don't know if it's safe to click yes,passwords,0,seed,train
+s094,"the calculator app on my phone disappeared, did I break it?",phone_apps,0,seed,train
+s095,"my login for the library website says ""invalid credentials"" and I swear it's right",passwords,1,seed,test
+s096,My Mac says disk is almost full and it's not even my fault!!!,files,1,seed,train
+s097,"Zoom keeps saying ""poor connection"" even though my internet is fine",video_calls,1,seed,test
+s098,"I cant log into my email on my phone, it says the password is wrong but it's not",email,1,seed,test
+s099,Chrome is using like all my memory and the laptop gets hot,slow,0,seed,train
+s100,my webcam shows a black picture in Zoom but works in the Camera app,video_calls,0,seed,train
+s101,Password reset email never arrives. I checked spam. Nothing.,passwords,1,seed,train
+s102,Outlook is so slow it takes ten minutes to open one email. Why is this happening,email,0,seed,train
+s103,I can see everyone but they can't see me on Google Meet,video_calls,0,seed,train
+s104,My Android phone lags everywhere since I added the new app,phone_apps,0,seed,train
+s105,I changed the wifi name and now nothing in the house will connect!!!,wifi,1,seed,train
+s106,my computer fan is screaming and it's hot to touch,slow,0,seed,train
+s107,Where does Windows save screenshots? I've taken like 50 and can't find them,files,0,seed,test
+s108,How do I stop programs from starting up automatically when I turn on the PC?,slow,0,seed,train
+s109,the Zoom app on my iPad is blank when I open it,phone_apps,0,seed,train
+s110,Instagram app closes on its own every time I open a video,phone_apps,1,seed,train
+s111,"Windows keeps saying printer driver unavailable, I reinstalled it three times and it's still broken",printer,1,seed,train
+s112,my computer takes forever to wake up from sleep,slow,0,seed,train
+s113,the authenticator app got wiped when I changed phones and now I'm locked out of everything,passwords,0,seed,test
+s114,my microphone is muted on Teams even though I unmuted it!!!,video_calls,1,seed,train
+s115,my OneDrive says sync pending for hours and the file never uploads,files,0,seed,test
+s116,"I can't find the app I downloaded last week, where did it go",phone_apps,0,seed,test
+s117,"The computer is being weird. Slow, then fast, then slow again",slow,0,seed,train
+s118,Why does my iPhone say no internet connection when my laptop is fine?,wifi,0,seed,train
+s119,Can my phone run Microsoft Teams? It keeps saying my phone is not supported,phone_apps,0,seed,train
+s120,The microphone on my headphones works with my phone but not with Teams,video_calls,0,seed,train
+s121,"My Yahoo mail is not syncing, the drafts are all gone?!",email,1,seed,train
+s122,Gmail app on my iPhone doesnt show the new email notifications anymore,email,0,seed,train
+s123,"My old Dell laptop takes forever to start up, like 10 minutes",slow,0,seed,test
+s124,"my tax return file disappeared after my laptop restarted, I need it today",files,1,seed,train
+s125,The laptop is running slowly since I installed the free game. Could that be it?,slow,0,seed,train
+s126,"Samsung Galaxy says ""Unfortunately, Settings has stopped"" - what now",phone_apps,0,seed,test
+s127,"I can't remember the answer to my security question, my first pet's name, help",passwords,0,seed,test
+s128,"Is 8GB of memory enough for Windows 11, mine feels so slow",slow,0,seed,train
+s129,"I connected to the wifi but it says No Internet, Secured on my Windows 11 laptop",wifi,0,seed,test
+s130,I want to record my Zoom meeting but the record button is greyed out,video_calls,0,seed,train
+s131,"The Documents folder is full of files called ""New folder (2)"" and I don't know how",files,0,seed,train
+s132,spam emails keep going into my inbox even when I mark them as junk,email,1,seed,test
+s133,the files on my USB stick are all showing as 0 bytes,files,0,seed,train
+s134,"I think my Facebook got hacked, the password suddenly doesn't work",passwords,0,seed,train
+s135,every program takes ages to open and the whole screen goes white,slow,0,seed,train
+s136,"the audio on my Teams meeting is echoing, everyone complains",video_calls,0,seed,train
+s137,"Microsoft Teams says my camera is in use by another app, but I closed everything",video_calls,1,seed,train
+s138,"Can I read my work email on my iPad too, or only on my computer?",email,0,seed,train
+s139,"can't print from my iPhone to the office printer, it doesnt show up",printer,0,seed,train
+s140,I accidentally swiped away my banking app and now it won't open,phone_apps,0,seed,test
+s141,"I need to log into the payroll site but the 2FA code expires every single time before I can type it in, and payday is tomorrow",passwords,1,seed,train
+s142,"wifi drops when my microwave is on, is that a thing??",wifi,0,seed,train
+s143,Teams keeps asking me to allow the microphone and I already did!,video_calls,1,seed,test
+s144,"Android keeps saying ""Google Play Services has stopped"" and I don't even know what that is",phone_apps,0,seed,train
+s145,"my brother's printer works from his phone but not from my laptop, how do I connect it",printer,0,seed,train
+s146,I got a new router from my provider but my old printer won't see the new network,wifi,0,seed,train
+s147,My Word document got saved as a weird .tmp file and I can't open it,files,0,seed,train
+s148,"The computer crashed with a blue screen and error 0x0000007E, what do I do",slow,0,seed,train
+s149,Wi-Fi is connected but websites won't load. Google loads sometimes.,wifi,0,seed,test
+s150,"Facebook app keeps logging me out on my iPhone, it's driving me crazy",phone_apps,1,seed,test
+s151,"My mum's account says ""Access denied"" and she is in a panic",passwords,0,seed,train
+s152,"Why do my apps have a red dot with a number on them, what does it mean",phone_apps,0,seed,train
+s153,How do I stop my laptop from going to sleep during a long video call?,video_calls,0,seed,train
+s154,"My computer used to be fast and now it's ridiculously slow, what happened",slow,1,seed,train
+s155,"Email keeps saying ""Sending failed 0x800CCC0E"" and I don't know what that means",email,0,seed,train
+s156,the printer makes a grinding noise and the lights keep flashing,printer,0,seed,train
+s157,Internet is down AGAIN. This is the third time this week!!,wifi,1,seed,train
+s158,the email I sent came back with a bounce message and I have no idea why,email,0,seed,train
+s159,"I forgot my password for the work computer, what do I do",passwords,0,seed,train
+s160,"my password manager says the password is weak, how do I change it safely",passwords,0,seed,train
+s161,the attachment is too big says gmail. how do i send a 40mb video,email,0,seed,train
+s162,How do I set up two-step verification on my Google account?,passwords,0,seed,train
+s163,"I'm so sick of resetting my password, it has to be the 12th time this year!!",passwords,1,seed,train
+s164,"the desktop icons keep disappearing and then coming back, what's going on",files,0,seed,train
+s165,"I can't open a PDF I downloaded, it says the file is corrupted!!",files,1,seed,train
+s166,The print spooler keeps stopping on my Windows 10 PC.,printer,0,seed,train
+s167,"The Teams app won't let me join the meeting from my browser, it wants me to download",video_calls,0,seed,train
+s168,I saved my essay in Word and now I can't find it anywhere,files,0,seed,train
+s169,How often should I restart my router? mine has been on for 9 months,wifi,0,seed,train
+s170,"Mail on my MacBook stopped downloading attachments, the paperclip is there but nothing opens",email,0,seed,test
+s171,"my phone says ""app not installed"" when I try to install the bank app",phone_apps,0,seed,train
+s172,why does Google Drive say I'm out of storage when I only have 4 gigs of photos,files,0,seed,train
+s173,Do I have to buy special paper for my printer? the tray says plain,printer,0,seed,train
+s174,how do I make an out of office reply in outlook when i'm on holiday,email,0,seed,test
+s175,"Windows 10 is so slow I'm thinking about buying a new one, is it worth fixing first?",slow,0,seed,train
+s176,Microsoft account keeps locking me out after I type my password,passwords,1,seed,train
+s177,"iPhone 15 battery drains like crazy after the update, the apps are on all day",phone_apps,0,seed,test
+s178,the Spotify app on my phone is grey and I can't click anything,phone_apps,1,seed,train
+s179,"Our office internet is so slow the video calls freeze, this is ridiculous",wifi,1,seed,train
+s180,Microsoft Defender is scanning and my whole computer is basically dead,slow,0,seed,test
+s181,"how do i print double sided on my printer, the option is greyed out",printer,0,seed,train
+s182,Why does Windows 11 keep asking for my PIN instead of my password?,passwords,0,seed,train
+s183,"Gmail says ""couldn't send"" every time I attach a photo",email,0,seed,train
+s184,Windows Update keeps running in the background and everything crawls,slow,0,seed,train
+s185,Do I need to change my password if the website had a data leak?,passwords,0,seed,train
+s186,I want to scan a document to my email from the printer but idk how,printer,0,seed,train
+s187,"My neighbour's wifi shows up but mine doesn't, is my router broken?",wifi,0,seed,train
+s188,Video calls are so choppy at work I look like a robot,video_calls,0,seed,test
+s189,The router light is orange. What does orange mean? I've been staring at it for an hour,wifi,0,seed,train
+s190,I've reset my password 3 times and it still says incorrect,passwords,1,seed,train
+s191,Can I print labels from the printer that's on the network drive?,printer,0,seed,train
+s192,"I got locked out of my account, it says too many attempts. How long do I wait?",passwords,0,seed,train
+s193,"my face is really dark on Zoom, how do I make it brighter",video_calls,0,seed,train
+s194,the camera works in other programs but Zoom says error 0xA00F4244 no camera,video_calls,0,seed,train
+s195,"Our guest wifi is slower than my phone's data plan, what's going on",wifi,0,seed,test
+s196,"the SD card in my camera says ""card is locked"" and I haven't locked it",files,0,seed,train
+s197,my webcam light is on but nothing shows up on the call,video_calls,0,seed,train
+s198,Windows Mail app on Windows 11 won't open at all,email,0,seed,train
+s199,"How do I find a file by what's inside it, not just the name?",files,0,seed,test
+s200,"I think someone is using my wifi because it's so slow, how do I see who is connected",wifi,0,seed,train
+s201,"Skype stopped working for my video calls after the update, what do I use now",video_calls,0,seed,train
+s202,"the weather app on my phone is showing the wrong city, how do I fix the location",phone_apps,0,seed,train
+s203,my email signature disappeared after I updated outlook,email,0,seed,train
+s204,How do I empty the trash on a Mac? It's always full,files,0,seed,train
+s205,The HP printer says offline but its right next to me and plugged in,printer,0,seed,train
+s206,my laptop says limited connectivity and it WONT let me go online at all!!,wifi,1,seed,train
+s207,my iPhone keeps crashing when I open the camera app!!,phone_apps,1,seed,train
+s208,"login page keeps looping back to the start page, I can't get in at all",passwords,0,seed,train
+s209,I'm trying to set up an auto reply but the options are all grey,email,0,seed,train
+s210,What is a passkey and do I need one for my bank app?,passwords,0,seed,train
+s211,"the speaker works on my laptop but Zoom uses a different one, how do I switch",video_calls,0,seed,test
+s212,"My new phone won't log into my old WhatsApp, it says the number is in use!! I've tried three times",phone_apps,1,seed,train
+s213,How do I turn off notifications for one app without turning them off for everything?,phone_apps,0,seed,train
+s214,My external hard drive isn't showing up on my Windows 11 PC,files,0,seed,test
+s215,"I keep getting a message that says my mailbox is full, what do I delete first",email,0,seed,train
+s216,How do I check what is using up all the CPU on my computer?,slow,0,seed,test
+s217,"I keep getting kicked out of Zoom after 40 minutes, is there a limit?",video_calls,0,seed,test
+s218,"My phone storage is full and I can't install anything, what's taking up space?",phone_apps,0,seed,train
+s219,"My PC keeps freezing and I have to hold the power button, AGAIN!!",slow,1,seed,train
+s220,"THE EMAIL APP CRASHES EVERY TIME I OPEN A PICTURE, I'M DONE",email,1,seed,train
+s221,"Outlook won't let me add my second email account, it just says ""something went wrong""",email,1,seed,train
+s222,"my printer prints but the colours are all wrong, everything looks pink",printer,0,seed,train
+s223,How do I add a new printer to my Windows 11 laptop?,printer,0,seed,train
+s224,"the printer on the 3rd floor shows up as ""Unknown"" in my list",printer,0,seed,test
+s225,"Whenever I log in to Teams it asks me to sign in again every single morning, why",passwords,1,seed,train
+s226,"the Gmail app on my phone won't update, it's stuck on ""waiting""",phone_apps,0,seed,train
+s227,hp deskjet wont wake up from sleep mode when i send a print job,printer,0,seed,train
+s228,"my PC says ""not enough storage"" when I open a big file",slow,0,seed,train
+s229,Why can't I hear people on the Teams call even though my volume is up?! Please!,video_calls,1,seed,train
+s230,The camera on my iPhone shows a black screen inside the Snapchat app,phone_apps,0,seed,train
+s231,the printer keeps printing the same page over and over and I cannot stop it!,printer,1,seed,test
+s232,"the Dropbox folder keeps making copies of my files named ""conflicted copy"" over and over",files,1,seed,test
+s233,how do I set up my work email on my Android phone,email,0,seed,train
+s234,"my emails are in the wrong order, newest at the bottom, how do I fix that",email,0,seed,train
+s235,my router is blinking red and the wifi is GONE. Great.,wifi,1,seed,train
+s236,How do I make the wifi reach the garage? the signal is 1 bar out there,wifi,0,seed,train
+s237,How do I back up my iPhone photos to my computer?,files,0,seed,train
+s238,"printer says ""paper jam in tray 2"" but I checked everything twice",printer,0,seed,train
+s239,"Our shared printer shows Offline, the lights are fine, what gives",printer,0,seed,test
+s240,"my phone won't let me install the app, it says from unknown sources",phone_apps,0,seed,test

@@ -39,7 +39,7 @@ Start with `@agent-orchestrator`; it delegates to the others. Every agent preloa
 - To be built: `data/`, `nlp/`, `pipeline/`, `site/`, `tests/`, `reports/`, `netlify.toml`
 
 ## Brand
-Logo `assets/brand/helpmate-mark.svg`, favicon `assets/brand/favicon.svg`. Font Nunito. Colors: navy #14213D, blue #2F7BF5 (See it), coral #FF6A4D (Hear it; use #E04E2C for coral text on light), teal #12A889 (Try it), purple #8A5CF6 (Read it), background #FFF8F0.
+Logo `assets/brand/helpmate-mark.svg`, favicon `assets/brand/favicon.svg`. Font Nunito. Colors: navy #14213D, blue #2F7BF5 (See it), coral #FF6A4D (Hear it; use #C2410C for coral text on light; blue, teal and purple text use #1D5FD0, #0B7A63, #6D3FD6), teal #12A889 (Try it), purple #8A5CF6 (Read it), background #FFF8F0.
 
 ## Labels
 Every result shown to users says which library made it: **NLTK**, **spaCy**, **Neural network**, or both.

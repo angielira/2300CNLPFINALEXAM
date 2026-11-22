@@ -1,0 +1,182 @@
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["hp", "canon", "epson", "brother", "office", "work", "home", "shared", "wireless", "laser", "inkjet"]}, "OP": "?"}, {"LEMMA": "printer"}], "id": "printer"}
+{"label": "DEVICE", "pattern": "hp deskjet", "id": "printer"}
+{"label": "DEVICE", "pattern": "deskjet", "id": "printer"}
+{"label": "DEVICE", "pattern": "hp laserjet", "id": "printer"}
+{"label": "DEVICE", "pattern": "laserjet", "id": "printer"}
+{"label": "DEVICE", "pattern": "hp officejet", "id": "printer"}
+{"label": "DEVICE", "pattern": "officejet", "id": "printer"}
+{"label": "DEVICE", "pattern": "canon pixma", "id": "printer"}
+{"label": "DEVICE", "pattern": "pixma", "id": "printer"}
+{"label": "DEVICE", "pattern": "hp envy", "id": "printer"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "scanner"}], "id": "scanner"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "copier"}], "id": "scanner"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["wifi", "wireless", "home"]}, "OP": "?"}, {"LEMMA": "router"}], "id": "router"}
+{"label": "DEVICE", "pattern": "wifi extender", "id": "extender"}
+{"label": "DEVICE", "pattern": "wi-fi extender", "id": "extender"}
+{"label": "DEVICE", "pattern": "range extender", "id": "extender"}
+{"label": "DEVICE", "pattern": "mesh network", "id": "extender"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "modem"}], "id": "modem"}
+{"label": "DEVICE", "pattern": "xfinity box", "id": "modem"}
+{"label": "DEVICE", "pattern": "comcast box", "id": "modem"}
+{"label": "DEVICE", "pattern": "cable box", "id": "modem"}
+{"label": "DEVICE", "pattern": "cable modem", "id": "modem"}
+{"label": "DEVICE", "pattern": "hotspot", "id": "hotspot"}
+{"label": "DEVICE", "pattern": "hot spot", "id": "hotspot"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["hp", "dell", "lenovo", "asus", "acer", "work", "home"]}, "OP": "?"}, {"LEMMA": "laptop"}], "id": "laptop"}
+{"label": "DEVICE", "pattern": [{"LOWER": "notebook"}, {"LOWER": {"IN": ["computer", "pc"]}}], "id": "laptop"}
+{"label": "DEVICE", "pattern": "chromebook", "id": "chromebook"}
+{"label": "DEVICE", "pattern": "chromebooks", "id": "chromebook"}
+{"label": "DEVICE", "pattern": [{"LOWER": "macbook"}, {"LOWER": {"IN": ["air", "pro"]}, "OP": "?"}], "id": "macbook"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["mac", "imac"]}}], "id": "mac"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["work", "home", "gaming", "office", "desktop", "family"]}, "OP": "?"}, {"LEMMA": "computer"}], "id": "computer"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["work", "home", "gaming", "office", "desktop", "family"]}, "OP": "?"}, {"LOWER": {"IN": ["pc", "pcs"]}}], "id": "computer"}
+{"label": "DEVICE", "pattern": [{"LOWER": "iphone"}, {"LOWER": {"IN": ["11", "12", "13", "14", "15", "16"]}, "OP": "?"}], "id": "iphone"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["ipad", "ipads"]}}], "id": "ipad"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["samsung", "work", "mobile", "cell", "smart", "home"]}, "OP": "?"}, {"LEMMA": "phone"}], "id": "phone"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "smartphone"}], "id": "phone"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "cellphone"}], "id": "phone"}
+{"label": "DEVICE", "pattern": "samsung galaxy", "id": "phone"}
+{"label": "DEVICE", "pattern": "google pixel", "id": "phone"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "tablet"}], "id": "tablet"}
+{"label": "DEVICE", "pattern": "kindle", "id": "tablet"}
+{"label": "DEVICE", "pattern": "fire tablet", "id": "tablet"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["smart", "apple"]}, "OP": "?"}, {"LOWER": {"IN": ["tv", "tvs", "television"]}}], "id": "tv"}
+{"label": "DEVICE", "pattern": "roku", "id": "tv"}
+{"label": "DEVICE", "pattern": "chromecast", "id": "tv"}
+{"label": "DEVICE", "pattern": "firestick", "id": "tv"}
+{"label": "DEVICE", "pattern": "fire stick", "id": "tv"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "webcam"}], "id": "webcam"}
+{"label": "DEVICE", "pattern": "web cam", "id": "webcam"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "camera"}], "id": "camera"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["headphones", "headphone", "earbuds", "earphones", "headset", "airpods"]}}], "id": "headphones"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "speaker"}], "id": "speaker"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["microphone", "microphones", "mic", "mics"]}}], "id": "microphone"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "monitor"}], "id": "monitor"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "keyboard"}], "id": "keyboard"}
+{"label": "DEVICE", "pattern": [{"LEMMA": "mouse"}], "id": "mouse"}
+{"label": "DEVICE", "pattern": "trackpad", "id": "mouse"}
+{"label": "DEVICE", "pattern": "touchpad", "id": "mouse"}
+{"label": "DEVICE", "pattern": [{"LOWER": {"IN": ["external"]}, "OP": "?"}, {"LOWER": "hard"}, {"LEMMA": "drive"}], "id": "hard_drive"}
+{"label": "DEVICE", "pattern": "hard disk", "id": "hard_drive"}
+{"label": "DEVICE", "pattern": "ssd", "id": "hard_drive"}
+{"label": "DEVICE", "pattern": "sd card", "id": "sd_card"}
+{"label": "DEVICE", "pattern": "sd cards", "id": "sd_card"}
+{"label": "DEVICE", "pattern": "memory card", "id": "sd_card"}
+{"label": "DEVICE", "pattern": "usb drive", "id": "usb_drive"}
+{"label": "DEVICE", "pattern": "usb stick", "id": "usb_drive"}
+{"label": "DEVICE", "pattern": "flash drive", "id": "usb_drive"}
+{"label": "DEVICE", "pattern": "thumb drive", "id": "usb_drive"}
+{"label": "DEVICE", "pattern": "wifi", "id": "wifi"}
+{"label": "DEVICE", "pattern": "wi-fi", "id": "wifi"}
+{"label": "DEVICE", "pattern": "wi fi", "id": "wifi"}
+{"label": "DEVICE", "pattern": "wireless network", "id": "wifi"}
+{"label": "DEVICE", "pattern": "ethernet", "id": "ethernet"}
+{"label": "DEVICE", "pattern": "bluetooth", "id": "bluetooth"}
+{"label": "DEVICE", "pattern": "apple watch", "id": "watch"}
+{"label": "DEVICE", "pattern": "smartwatch", "id": "watch"}
+{"label": "DEVICE", "pattern": "fitbit", "id": "watch"}
+{"label": "DEVICE", "pattern": "xbox", "id": "console"}
+{"label": "DEVICE", "pattern": "playstation", "id": "console"}
+{"label": "APP", "pattern": "outlook", "id": "outlook"}
+{"label": "APP", "pattern": "microsoft outlook", "id": "outlook"}
+{"label": "APP", "pattern": "outlook.com", "id": "outlook"}
+{"label": "APP", "pattern": "gmail", "id": "gmail"}
+{"label": "APP", "pattern": "google mail", "id": "gmail"}
+{"label": "APP", "pattern": "hotmail", "id": "hotmail"}
+{"label": "APP", "pattern": "yahoo mail", "id": "yahoo_mail"}
+{"label": "APP", "pattern": "yahoo email", "id": "yahoo_mail"}
+{"label": "APP", "pattern": "windows mail", "id": "windows_mail"}
+{"label": "APP", "pattern": "apple mail", "id": "apple_mail"}
+{"label": "APP", "pattern": "icloud mail", "id": "apple_mail"}
+{"label": "APP", "pattern": "mail app", "id": "mail_app"}
+{"label": "APP", "pattern": "thunderbird", "id": "mail_app"}
+{"label": "APP", "pattern": "aol mail", "id": "mail_app"}
+{"label": "APP", "pattern": "zoom", "id": "zoom"}
+{"label": "APP", "pattern": "teams", "id": "teams"}
+{"label": "APP", "pattern": "microsoft teams", "id": "teams"}
+{"label": "APP", "pattern": "ms teams", "id": "teams"}
+{"label": "APP", "pattern": "google meet", "id": "google_meet"}
+{"label": "APP", "pattern": "skype", "id": "skype"}
+{"label": "APP", "pattern": "facetime", "id": "facetime"}
+{"label": "APP", "pattern": "webex", "id": "webex"}
+{"label": "APP", "pattern": "slack", "id": "slack"}
+{"label": "APP", "pattern": "whatsapp", "id": "whatsapp"}
+{"label": "APP", "pattern": "chrome", "id": "chrome"}
+{"label": "APP", "pattern": "google chrome", "id": "chrome"}
+{"label": "APP", "pattern": "firefox", "id": "firefox"}
+{"label": "APP", "pattern": "microsoft edge", "id": "edge"}
+{"label": "APP", "pattern": "safari", "id": "safari"}
+{"label": "APP", "pattern": "excel", "id": "excel"}
+{"label": "APP", "pattern": "microsoft excel", "id": "excel"}
+{"label": "APP", "pattern": [{"TEXT": "Word", "IS_SENT_START": false}], "id": "word"}
+{"label": "APP", "pattern": "microsoft word", "id": "word"}
+{"label": "APP", "pattern": "ms word", "id": "word"}
+{"label": "APP", "pattern": "powerpoint", "id": "powerpoint"}
+{"label": "APP", "pattern": "microsoft powerpoint", "id": "powerpoint"}
+{"label": "APP", "pattern": "microsoft office", "id": "office"}
+{"label": "APP", "pattern": "office 365", "id": "office"}
+{"label": "APP", "pattern": "microsoft 365", "id": "office"}
+{"label": "APP", "pattern": "onenote", "id": "office"}
+{"label": "APP", "pattern": "onedrive", "id": "onedrive"}
+{"label": "APP", "pattern": "one drive", "id": "onedrive"}
+{"label": "APP", "pattern": "google drive", "id": "google_drive"}
+{"label": "APP", "pattern": "google docs", "id": "google_drive"}
+{"label": "APP", "pattern": "google photos", "id": "google_drive"}
+{"label": "APP", "pattern": "dropbox", "id": "dropbox"}
+{"label": "APP", "pattern": "icloud", "id": "icloud"}
+{"label": "APP", "pattern": "icloud drive", "id": "icloud"}
+{"label": "APP", "pattern": "app store", "id": "app_store"}
+{"label": "APP", "pattern": "play store", "id": "play_store"}
+{"label": "APP", "pattern": "google play", "id": "play_store"}
+{"label": "APP", "pattern": "google play store", "id": "play_store"}
+{"label": "APP", "pattern": "google play services", "id": "play_store"}
+{"label": "APP", "pattern": "facebook", "id": "facebook"}
+{"label": "APP", "pattern": "instagram", "id": "instagram"}
+{"label": "APP", "pattern": "snapchat", "id": "snapchat"}
+{"label": "APP", "pattern": "tiktok", "id": "tiktok"}
+{"label": "APP", "pattern": "spotify", "id": "spotify"}
+{"label": "APP", "pattern": "youtube", "id": "youtube"}
+{"label": "APP", "pattern": "netflix", "id": "netflix"}
+{"label": "APP", "pattern": "google maps", "id": "google_maps"}
+{"label": "APP", "pattern": [{"LOWER": "camera"}, {"LOWER": "app"}], "id": "camera_app"}
+{"label": "APP", "pattern": "authenticator app", "id": "authenticator"}
+{"label": "APP", "pattern": "microsoft authenticator", "id": "authenticator"}
+{"label": "APP", "pattern": "google authenticator", "id": "authenticator"}
+{"label": "APP", "pattern": "lastpass", "id": "authenticator"}
+{"label": "APP", "pattern": "1password", "id": "authenticator"}
+{"label": "APP", "pattern": "bitwarden", "id": "authenticator"}
+{"label": "APP", "pattern": "face id", "id": "face_id"}
+{"label": "APP", "pattern": "touch id", "id": "face_id"}
+{"label": "APP", "pattern": "task manager", "id": "task_manager"}
+{"label": "APP", "pattern": "file explorer", "id": "file_explorer"}
+{"label": "APP", "pattern": "finder", "id": "file_explorer"}
+{"label": "APP", "pattern": "recycle bin", "id": "recycle_bin"}
+{"label": "APP", "pattern": "windows update", "id": "windows_update"}
+{"label": "APP", "pattern": "microsoft defender", "id": "defender"}
+{"label": "APP", "pattern": "windows defender", "id": "defender"}
+{"label": "APP", "pattern": "norton", "id": "defender"}
+{"label": "APP", "pattern": "mcafee", "id": "defender"}
+{"label": "APP", "pattern": "avast", "id": "defender"}
+{"label": "APP", "pattern": "antivirus", "id": "defender"}
+{"label": "APP", "pattern": "adobe reader", "id": "acrobat"}
+{"label": "APP", "pattern": "acrobat", "id": "acrobat"}
+{"label": "OS", "pattern": [{"LOWER": "windows"}, {"LOWER": {"IN": ["7", "8", "10", "11"]}, "OP": "?"}], "id": "windows"}
+{"label": "OS", "pattern": "microsoft windows", "id": "windows"}
+{"label": "OS", "pattern": "macos", "id": "macos"}
+{"label": "OS", "pattern": "mac os", "id": "macos"}
+{"label": "OS", "pattern": "mac os x", "id": "macos"}
+{"label": "OS", "pattern": "osx", "id": "macos"}
+{"label": "OS", "pattern": "os x", "id": "macos"}
+{"label": "OS", "pattern": [{"LOWER": "ios"}, {"LOWER": {"IN": ["15", "16", "17", "18"]}, "OP": "?"}], "id": "ios"}
+{"label": "OS", "pattern": "ipados", "id": "ipados"}
+{"label": "OS", "pattern": [{"LOWER": "android"}, {"LOWER": {"IN": ["12", "13", "14", "15", "16"]}, "OP": "?"}], "id": "android"}
+{"label": "OS", "pattern": "chrome os", "id": "chromeos"}
+{"label": "OS", "pattern": "chromeos", "id": "chromeos"}
+{"label": "OS", "pattern": "linux", "id": "linux"}
+{"label": "OS", "pattern": "ubuntu", "id": "linux"}
+{"label": "ERROR_CODE", "pattern": [{"TEXT": {"REGEX": "^0[xX][0-9A-Fa-f]{4,8}$"}}], "id": "hex_error"}
+{"label": "ERROR_CODE", "pattern": [{"TEXT": {"REGEX": "^[A-Za-z]+(_[A-Za-z0-9]+){2,}$"}}], "id": "named_error"}
+{"label": "ERROR_CODE", "pattern": [{"LOWER": {"IN": ["error", "http"]}}, {"TEXT": {"REGEX": "^[45][0-9]{2}$"}}], "id": "http_error"}
+{"label": "ERROR_CODE", "pattern": [{"LOWER": "http"}, {"LOWER": "error"}, {"TEXT": {"REGEX": "^[45][0-9]{2}$"}}], "id": "http_error"}
+{"label": "ERROR_CODE", "pattern": [{"TEXT": {"REGEX": "^[45][0-9]{2}$"}}, {"LOWER": "error"}], "id": "http_error"}
+{"label": "ERROR_CODE", "pattern": [{"LOWER": "error"}, {"LOWER": "code", "OP": "?"}, {"TEXT": {"REGEX": "^[0-9]{4,5}$"}}], "id": "numbered_error"}

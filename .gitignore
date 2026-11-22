@@ -1,0 +1,7 @@
+site/data/
+site/nltk_data/
+site/py/
+.cache/
+__pycache__/
+.env
+.venv/
