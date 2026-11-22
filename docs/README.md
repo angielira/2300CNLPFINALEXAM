@@ -12,6 +12,7 @@ This folder is the shared context for the agent team built next.
 | 4 | [04-neural-network.md](04-neural-network.md) | The MLP question classifier: trained at build time, run in the browser |
 | 5 | [05-learning-formats.md](05-learning-formats.md) | What research says about learning styles (VARK) and how HelpMate offers formats responsibly |
 | 6 | [06-netlify-architecture.md](06-netlify-architecture.md) | What Netlify can and cannot run, the recommended architecture, and the self-improvement loop |
+| 7 | [expert-roster.md](expert-roster.md) | The 16-agent team, the roles left out, and the shared skills |
 
 ## Key findings
 
