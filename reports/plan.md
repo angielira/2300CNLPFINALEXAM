@@ -233,6 +233,11 @@ def predict_numpy(model: dict, text: str) -> dict
   6. `unsure = known_terms == 0 or confidence < model["min_confidence"]`.
 - Local tests use `tokenizer="simple_v1"`. `pipeline/build.py` exits with an error if it would publish `simple_v1` while `NETLIFY == "true"`.
 
+> **As built (Atlas, 2026-11-22).** This section was the starting contract. The shipped code differs in these ways; the code wins.
+> - **Classifier defaults changed.** `nlp/classifier.py` sets `NGRAM_RANGE = (1, 1)` (unigrams, not 1-2-grams) and `MLP_ALPHA = 1e-2` (not 1e-3). Everything else above is unchanged (lbfgs, 64 hidden units, max_features 2000, sublinear TF, l2, `min_confidence` 0.45). Reason: repeated 5-fold CV on the train split only, 0.729 -> 0.780, better on 18 of 25 folds, worse on 1 (see `reports/nlp_quality.md` section 2.2; reproduce with `python pipeline/eval_classifier.py`). model.json shrank from about 1 MB to about 456 KB. So the `model.json` example in section 3 now has `"ngram_range": [1, 1]` and no bigram terms such as `"not print"`; `predict_numpy` step 2 still reads `ngram_range` from the model, so it works for either.
+> - **To re-check on Netlify:** the choice was made with `simple_v1`. Synapse (ml-engineer) should re-run `python pipeline/eval_classifier.py --tokenizer nltk_clean_v1` where NLTK is installed.
+> - **Front-end file names (section 1 and phase 4a/4d).** Iris and Vega used `site/css/design-tokens.css` (not `tokens.css`) and `site/css/app.css` (not `helpmate.css`). There is **no `insights.css`**: the Insights styles are in `app.css` section 12. Every page loads design-tokens.css, then app.css. The UI spec is `reports/ux-spec.md` (not `docs/ui-spec.md`). The quality report is `reports/nlp_quality.md` (not `reports/quality.md`).
+
 ### 4.4 `pipeline/feedback.py` (owner feedback-loop-engineer). Stdlib urllib only; nltk optional
 ```python
 def load_feedback(token: str | None = None, site_id: str | None = None, path: str | None = None, form_name: str = "rating") -> list[dict]

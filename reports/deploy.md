@@ -43,10 +43,9 @@ Rollback: in Netlify -> Deploys, click an older successful deploy and choose Pub
 ## Notes
 - Netlify Forms (ratings) only work after form detection is on and the site has deployed with the hidden static form in `site/index.html`.
 - Pyodide loads from cdn.jsdelivr.net. There is no Content-Security-Policy header, so nothing blocks it. If a CSP is added later, allow `'wasm-unsafe-eval'`, `'unsafe-eval'`, `cdn.jsdelivr.net`, `fonts.googleapis.com` and `fonts.gstatic.com`.
-- Pending before first deploy: `requirements.txt`, `pipeline/build.py` and `netlify/functions/rebuild.mjs` are not in the repo yet. Build will fail until they exist.
 
 ## Sources
 - File-based configuration: https://docs.netlify.com/build/configure-builds/file-based-configuration/
 - Python versions: https://www.netlify.com/blog/announcing-configurable-python-versions-in-netlify-builds
 - Forms setup: https://docs.netlify.com/manage/forms/setup
-- Build hooks: knowledge/netlify-engineer and .claude/skills/build-hooks (menu path not yet verified against the live UI)
+- Build hooks: https://docs.netlify.com/build/configure-builds/build-hooks/

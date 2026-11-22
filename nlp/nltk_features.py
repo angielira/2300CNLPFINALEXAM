@@ -16,7 +16,12 @@ FRUSTRATION_THRESHOLD = -0.4
 FRUSTRATION_PHRASES = (
     "not working", "doesn't work", "won't", "can't", "broken", "crashed",
     "again", "nothing works", "tried everything", "keeps", "stuck", "frozen",
+    # apostrophe-less spellings (people often type without apostrophes)
+    "wont", "cant", "isnt working", "doesnt work", "didnt work", "wouldnt",
+    "crashes", "keeps crashing",
 )
+# Repetition is a frustration signal only when combined with another signal.
+REPETITION_PHRASES = ("over and over", "every single time", "again and again", "still not")
 TOKEN_PATTERN = r"[a-z0-9]+(?:'[a-z]+)?"
 VADER_LEXICON_PATH = "sentiment/vader_lexicon/vader_lexicon.txt"
 
@@ -76,11 +81,22 @@ def _analyzer():
     return _SIA
 
 
-def _has_phrase(text_lower: str) -> bool:
-    for p in FRUSTRATION_PHRASES:
+def _find(phrases, text_lower: str) -> bool:
+    for p in phrases:
         if re.search(r"(?<![a-z0-9'])" + re.escape(p) + r"(?![a-z0-9'])", text_lower):
             return True
     return False
+
+
+def _has_phrase(text_lower: str) -> bool:
+    return _find(FRUSTRATION_PHRASES, text_lower)
+
+
+def _strip_repetition(text_lower: str) -> str:
+    """Remove repetition phrases so they cannot count as their own 'other signal'."""
+    for p in REPETITION_PHRASES:
+        text_lower = re.sub(r"(?<![a-z0-9'])" + re.escape(p) + r"(?![a-z0-9'])", " ", text_lower)
+    return text_lower
 
 
 def frustration(text: str) -> dict:
@@ -89,11 +105,16 @@ def frustration(text: str) -> dict:
     reasons = []
     if scores["compound"] <= FRUSTRATION_THRESHOLD:
         reasons.append("vader_negative")
-    if _has_phrase(norm.lower()):
+    low = norm.lower()
+    if _has_phrase(low):
         if "!!" in norm:
             reasons.append("problem_phrase+exclaim")
         elif _CAPS_RE.search(norm):
             reasons.append("problem_phrase+caps")
+    if _find(REPETITION_PHRASES, low):
+        rest = _strip_repetition(low)
+        if "!!" in norm or _CAPS_RE.search(norm) or _has_phrase(rest):
+            reasons.append("repetition+signal")
     return {
         "neg": scores["neg"], "neu": scores["neu"], "pos": scores["pos"],
         "compound": scores["compound"],

@@ -420,6 +420,18 @@ textarea.field__input { min-height: 6rem; resize: vertical; }
 .data-table td.num, .data-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .empty-state { text-align: center; padding: var(--space-6) var(--space-4); background: #fff; border: 2px dashed var(--line-strong); border-radius: var(--radius-lg); }
 
+/* ---------- 12b. Insights additions (Vega): heat table, errors, notes ---------- */
+#insights-notes .notice { margin-bottom: var(--space-3); }
+#insights-status.notice { margin-top: var(--space-4); }
+#chart-quality { grid-column: 1 / -1; margin-top: var(--space-4); }
+#chart-quality > h2 { margin-bottom: var(--space-2); }
+.heat th, .heat td { white-space: nowrap; }
+.heat thead th { white-space: normal; min-width: 4.5rem; vertical-align: bottom; }
+.heat__cell { text-align: center !important; font-weight: var(--fw-strong); min-width: 3rem; }
+.heat__cell--diag { font-weight: var(--fw-display); outline: 3px solid var(--navy); outline-offset: -3px; }
+.error-group { margin-bottom: var(--space-4); }
+.error-list { padding-left: var(--space-5); display: grid; gap: var(--space-2); }
+
 /* ---------- 13. Larger screens ---------- */
 @media (min-width: 40rem) {                          /* 640px */
   :root { --gutter: 1.5rem; }
@@ -473,3 +485,15 @@ textarea.field__input { min-height: 6rem; resize: vertical; }
   .read-list__item::before { border-color: #000; width: 0.6cm; height: 0.6cm; }
   a { color: #000; text-decoration: none; }
 }
+
+/* Pixel/Atlas fix: anchor visually-hidden star radios to their row */
+.stars__row { position: relative; }
+
+/* Atlas QA fixes (from Quinn's report): compact confusion-matrix headers, badges never wrap */
+.heat thead th:not(:first-child) {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  white-space: nowrap; word-break: normal; overflow-wrap: normal;
+  min-width: 2.25rem; padding-block: var(--space-2, .5rem); text-align: left;
+}
+.heat__cell { min-width: 2.25rem; }
+.badge { white-space: nowrap; }

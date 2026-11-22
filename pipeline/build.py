@@ -269,39 +269,74 @@ def make_nltk_stats(texts: list[str], frustrated_rows: list[tuple[str, int]], ca
                             "threshold": nf.FRUSTRATION_THRESHOLD}}
 
 
-def vader_metrics(rows: list[dict], nf) -> dict | None:
-    if nf is None or not rows:
-        return None
-    tp = fp = fn = 0
-    fns, fps = [], []
-    for r in rows:
-        pred, true = nf.frustration(r["text"])["frustrated"], r["frustrated"] == "1"
-        if pred and true:
-            tp += 1
-        elif pred:
-            fp += 1
-            fps.append(r["text"])
-        elif true:
-            fn += 1
-            fns.append(r["text"])
+def _prf(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
     p = tp / (tp + fp) if tp + fp else 0.0
     rc = tp / (tp + fn) if tp + fn else 0.0
     f1 = 2 * p * rc / (p + rc) if p + rc else 0.0
+    return round(p, 4), round(rc, 4), round(f1, 4)
+
+
+def vader_metrics(rows: list[dict], nf) -> dict | None:
+    """Frustration rule vs the seed `frustrated` column (all rows, plus the test split alone).
+
+    VADER is not trained here, but the phrase list and threshold were written while looking at
+    the seed set, so the all-rows numbers can be optimistic; `test` is the fairer number.
+    """
+    if nf is None or not rows:
+        return None
+    counts = {"all": [0, 0, 0], "test": [0, 0, 0]}   # tp, fp, fn
+    fns, fps = [], []
+    by_reason = Counter()
+    for r in rows:
+        res = nf.frustration(r["text"])
+        pred, true = bool(res["frustrated"]), str(r["frustrated"]).strip() == "1"
+        if pred and true:
+            by_reason.update(res.get("reasons", []))
+        keys = ["all"] + (["test"] if r.get("split") == "test" else [])
+        for k in keys:
+            c = counts[k]
+            if pred and true:
+                c[0] += 1
+            elif pred:
+                c[1] += 1
+            elif true:
+                c[2] += 1
+        if pred and not true:
+            fps.append(r["text"])
+        elif true and not pred:
+            fns.append(r["text"])
+    p, rc, f1 = _prf(*counts["all"])
+    tp_t, fp_t, fn_t = counts["test"]
+    pt, rt, ft = _prf(tp_t, fp_t, fn_t)
     return {"library": "NLTK", "threshold": nf.FRUSTRATION_THRESHOLD, "n": len(rows),
-            "precision": round(p, 4), "recall": round(rc, 4), "f1": round(f1, 4),
+            "n_frustrated": counts["all"][0] + counts["all"][2],
+            "precision": p, "recall": rc, "f1": f1,
+            "test": {"n": sum(1 for r in rows if r.get("split") == "test"),
+                     "n_frustrated": tp_t + fn_t, "precision": pt, "recall": rt, "f1": ft},
+            "true_positive_reasons": dict(by_reason),
             "false_negatives": fns[:5], "false_positives": fps[:5]}
 
 
+def _norm(x: str) -> str:
+    return " ".join(str(x).lower().split())
+
+
 def spacy_metrics(gold: list[dict] | None, sf, nlp) -> dict | None:
+    """Entities (exact text + label, case-insensitive) and problems vs data/spacy_gold.jsonl.
+
+    problem_accuracy: share of gold questions with a problem where at least one extracted
+    (thing, problem) pair equals a gold pair exactly. problem_thing_accuracy only asks that the
+    broken thing is right. Gold lines with no problems are not counted for either.
+    """
     if sf is None or not gold:
         return None
     res = sf.analyze([g["text"] for g in gold], nlp)
     tp = fp = fn = 0
-    prob_ok = prob_n = 0
-    errors = []
+    prob_ok = thing_ok = prob_n = 0
+    errors, prob_errors = [], []
     for g, r in zip(gold, res):
-        exp = {(e["text"].lower(), e["label"]) for e in g.get("entities", [])}
-        got = {(e["text"].lower(), e["label"]) for e in r["entities"]
+        exp = {(_norm(e["text"]), e["label"]) for e in g.get("entities", [])}
+        got = {(_norm(e["text"]), e["label"]) for e in r["entities"]
                if e["label"] in ("DEVICE", "APP", "OS", "ERROR_CODE")}
         tp += len(exp & got)
         fp += len(got - exp)
@@ -310,14 +345,20 @@ def spacy_metrics(gold: list[dict] | None, sf, nlp) -> dict | None:
             errors.append({"text": g["text"], "expected": sorted(map(list, exp)), "got": sorted(map(list, got))})
         if g.get("problems"):
             prob_n += 1
-            gp = {(p["thing"], p["problem"]) for p in g["problems"]}
-            rp = {(p["thing"], p["problem"]) for p in r["problems"]}
-            prob_ok += bool(gp & rp)
-    p = tp / (tp + fp) if tp + fp else 0.0
-    rc = tp / (tp + fn) if tp + fn else 0.0
-    return {"library": "spaCy", "n": len(gold), "entity_precision": round(p, 4),
-            "entity_recall": round(rc, 4),
-            "problem_accuracy": round(prob_ok / prob_n, 4) if prob_n else None, "errors": errors}
+            gp = {(_norm(p["thing"]), _norm(p["problem"])) for p in g["problems"]}
+            rp = {(_norm(p["thing"]), _norm(p["problem"])) for p in r["problems"]}
+            hit = bool(gp & rp)
+            prob_ok += hit
+            thing_ok += bool({t for t, _ in gp} & {t for t, _ in rp})
+            if not hit and len(prob_errors) < 5:
+                prob_errors.append({"text": g["text"], "expected": sorted(map(list, gp)), "got": sorted(map(list, rp))})
+    p, rc, _ = _prf(tp, fp, fn)
+    return {"library": "spaCy", "n": len(gold), "entity_precision": p, "entity_recall": rc,
+            "entity_counts": {"tp": tp, "fp": fp, "fn": fn},
+            "problem_n": prob_n,
+            "problem_accuracy": round(prob_ok / prob_n, 4) if prob_n else None,
+            "problem_thing_accuracy": round(thing_ok / prob_n, 4) if prob_n else None,
+            "errors": errors, "problem_errors": prob_errors}
 
 
 def write_classifier_report(path: Path, m: dict, tok: str) -> None:
@@ -471,6 +512,17 @@ def run(out: Path, allow_missing: bool, on_netlify: bool) -> int:
         print(f"  {p.relative_to(out)}  {p.stat().st_size:,} bytes")
     print(f"  tokenizer={tok}  accuracy={cmetrics['accuracy']:.3f}  n_train={len(texts)}  "
           f"n_feedback={len(fb_rows)}  ratings={summary.get('total', 0)}")
+    v, sp = metrics["vader"], metrics["spacy"]
+    if v:
+        print(f"  NLTK frustration (all seed): precision={v['precision']:.3f} recall={v['recall']:.3f} "
+              f"f1={v['f1']:.3f} n={v['n']}; test split: precision={v['test']['precision']:.3f} "
+              f"recall={v['test']['recall']:.3f} n={v['test']['n']}")
+    if sp:
+        pa = sp["problem_accuracy"]
+        pt = sp["problem_thing_accuracy"]
+        print(f"  spaCy entities: precision={sp['entity_precision']:.3f} recall={sp['entity_recall']:.3f} "
+              f"{sp['entity_counts']}; problems: exact={pa if pa is None else f'{pa:.3f}'} "
+              f"thing={pt if pt is None else f'{pt:.3f}'} n={sp['problem_n']}")
     if skipped:
         print(f"  SKIPPED: {', '.join(skipped)}")
     return 0

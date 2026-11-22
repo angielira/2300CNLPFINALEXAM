@@ -53,6 +53,29 @@ def test_frustrated_examples():
     assert r["frustrated"] and "problem_phrase+caps" in r["reasons"]
 
 
+def test_apostrophe_free_and_crashes():
+    for txt in ("my laptop WONT connect!!", "it cant print!!", "printer isnt working!!",
+                "word doesnt work!!", "excel didnt work!!", "it wouldnt open!!",
+                "the app crashes!!", "my phone keeps crashing!!"):
+        r = _need(nf.frustration, txt)
+        assert "problem_phrase+exclaim" in r["reasons"], txt
+    # whole-word matching: no hit inside other words
+    assert not nf._has_phrase("the wonton cantaloupe crashesque")
+
+
+def test_repetition_needs_second_signal():
+    r = _need(nf.frustration, "the page loads over and over")
+    assert "repetition+signal" not in r["reasons"]
+    r = _need(nf.frustration, "the page loads over and over!!")
+    assert "repetition+signal" in r["reasons"]
+    r = _need(nf.frustration, "it fails EVERY SINGLE TIME")
+    assert "repetition+signal" in r["reasons"]
+    r = _need(nf.frustration, "it is still not working")
+    assert "repetition+signal" in r["reasons"]
+    r = _need(nf.frustration, "it asks again and again")
+    assert "repetition+signal" not in r["reasons"]
+
+
 def test_calm_not_frustrated():
     r = _need(nf.frustration, "How do I change my wifi password?")
     assert not r["frustrated"] and r["reasons"] == []

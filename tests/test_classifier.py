@@ -52,7 +52,7 @@ def test_export_schema(trained):
     assert len(model["coefs"][1]) == 64 and len(model["coefs"][1][0]) == 8
     assert [len(b) for b in model["intercepts"]] == [64, 8]
     assert model["classes"] == sorted(CATEGORY_IDS)
-    assert model["tokenizer"] == TOK and model["ngram_range"] == [1, 2]
+    assert model["tokenizer"] == TOK and model["ngram_range"] == list(classifier.NGRAM_RANGE)
     assert model["activation"] == "relu" and model["out_activation"] == "softmax"
     assert model["min_confidence"] == 0.45 and model["items"] == []
     assert m["confusion_matrix"]["labels"] == CATEGORY_IDS

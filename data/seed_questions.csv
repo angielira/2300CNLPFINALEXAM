@@ -46,7 +46,7 @@ s044,"my emails wont send from outlook, they just sit in the outbox",email,0,see
 s045,my Outlook calendar invites are not showing up in my email,email,0,seed,train
 s046,"Zoom says ""you are not connected to audio"" and I can't hear anyone",video_calls,0,seed,train
 s047,Can I use Face ID to unlock my Windows laptop?,passwords,0,seed,test
-s048,Internet is fine on the computer but Zoom says no network. I don't understand,wifi,0,seed,test
+s048,Internet is fine on the computer but Zoom says no network. I don't understand,video_calls,0,seed,test
 s049,Canon printer not connecting to wifi after i changed my router,printer,0,seed,test
 s050,I deleted a photo folder by accident. Is there a way to get it back from the recycle bin?,files,0,seed,train
 s051,my computer is SOOO slow it takes five minutes to open a web page,slow,1,seed,train
@@ -65,7 +65,7 @@ s063,My Apple ID is asking for a verification code but my phone number changed,p
 s064,"I accidentally renamed all my files to random letters, PLEASE tell me how to undo that",files,1,seed,test
 s065,printer is jammed AGAIN!! paper is not even in there,printer,1,seed,train
 s066,How do I delete an app on my Samsung phone that I don't use?,phone_apps,0,seed,train
-s067,My video calls keep dropping when my son streams movies on the same wifi,video_calls,0,seed,train
+s067,My video calls keep dropping when my son streams movies on the same wifi,wifi,0,seed,train
 s068,The internet on my Android keeps switching off and on,wifi,0,seed,train
 s069,"the login page keeps saying ""your account is locked"" and I did nothing!!!",passwords,1,seed,train
 s070,"the mouse lags and clicks take a second to respond, it's driving me nuts",slow,1,seed,train
@@ -79,7 +79,7 @@ s077,PRINTER IS USELESS I HAVE A REPORT DUE IN ONE HOUR,printer,1,seed,train
 s078,"I moved house and the wifi is gone, the router says it's looking for the cable",wifi,0,seed,test
 s079,"how do I turn on background blur in Zoom, mine looks like a messy room",video_calls,0,seed,train
 s080,how do I change my wifi password on the router,wifi,0,seed,train
-s081,"Outlook keeps asking for my password over and over and over. I type it in, it works for ten minutes, then it asks again, and my boss keeps asking why I missed the morning emails",email,1,seed,test
+s081,"Outlook keeps asking for my password over and over and over. I type it in, it works for ten minutes, then it asks again, and my boss keeps asking why I missed the morning emails",passwords,1,seed,test
 s082,"my printer wont print anything, it just blinks orange",printer,0,seed,train
 s083,Can I join a video call from my phone and laptop at the same time?,video_calls,0,seed,train
 s084,Can you help me organise the 400 pictures from my wedding? They're a mess,files,0,seed,train
@@ -96,7 +96,7 @@ s094,"the calculator app on my phone disappeared, did I break it?",phone_apps,0,
 s095,"my login for the library website says ""invalid credentials"" and I swear it's right",passwords,1,seed,test
 s096,My Mac says disk is almost full and it's not even my fault!!!,files,1,seed,train
 s097,"Zoom keeps saying ""poor connection"" even though my internet is fine",video_calls,1,seed,test
-s098,"I cant log into my email on my phone, it says the password is wrong but it's not",email,1,seed,test
+s098,"I cant log into my email on my phone, it says the password is wrong but it's not",passwords,1,seed,test
 s099,Chrome is using like all my memory and the laptop gets hot,slow,0,seed,train
 s100,my webcam shows a black picture in Zoom but works in the Camera app,video_calls,0,seed,train
 s101,Password reset email never arrives. I checked spam. Nothing.,passwords,1,seed,train
@@ -144,11 +144,11 @@ s142,"wifi drops when my microwave is on, is that a thing??",wifi,0,seed,train
 s143,Teams keeps asking me to allow the microphone and I already did!,video_calls,1,seed,test
 s144,"Android keeps saying ""Google Play Services has stopped"" and I don't even know what that is",phone_apps,0,seed,train
 s145,"my brother's printer works from his phone but not from my laptop, how do I connect it",printer,0,seed,train
-s146,I got a new router from my provider but my old printer won't see the new network,wifi,0,seed,train
+s146,I got a new router from my provider but my old printer won't see the new network,printer,0,seed,train
 s147,My Word document got saved as a weird .tmp file and I can't open it,files,0,seed,train
 s148,"The computer crashed with a blue screen and error 0x0000007E, what do I do",slow,0,seed,train
 s149,Wi-Fi is connected but websites won't load. Google loads sometimes.,wifi,0,seed,test
-s150,"Facebook app keeps logging me out on my iPhone, it's driving me crazy",phone_apps,1,seed,test
+s150,"Facebook app keeps logging me out on my iPhone, it's driving me crazy",passwords,1,seed,test
 s151,"My mum's account says ""Access denied"" and she is in a panic",passwords,0,seed,train
 s152,"Why do my apps have a red dot with a number on them, what does it mean",phone_apps,0,seed,train
 s153,How do I stop my laptop from going to sleep during a long video call?,video_calls,0,seed,train

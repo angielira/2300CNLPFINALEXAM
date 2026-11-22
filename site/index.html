@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HelpMate: friendly help with your tech problems</title>
+  <meta name="description" content="Type your tech problem in plain words. HelpMate shows you what to do, step by step.">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container container--wide site-header__inner">
+      <a class="brand" href="index.html"><img class="brand__mark" src="assets/brand/helpmate-mark.svg" alt="" width="44" height="44"><span class="brand__name">HelpMate</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-link" href="index.html" aria-current="page">Get help</a>
+        <a class="nav-link" href="insights.html">Insights</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="hero__title">Hi! What's giving you trouble today?</h1>
+      <p class="hero__lead">Tell me in your own words. There are no silly questions, and I'll go one small step at a time.</p>
+      <form id="ask-form" class="ask" novalidate>
+        <label class="ask__label" for="question">Type your question here</label>
+        <textarea id="question" class="ask__input" rows="3" maxlength="300" aria-describedby="question-hint question-error" placeholder="For example: my printer will not print"></textarea>
+        <p id="question-error" class="field__error" hidden></p>
+        <p id="question-hint" class="ask__hint">Please don't include passwords or personal details.</p>
+        <div class="ask__actions">
+          <button id="ask-button" class="btn btn--primary btn--lg" type="submit">Help me with this</button>
+          <span class="ask__count" id="ask-count" aria-live="off">0 of 300</span>
+        </div>
+      </form>
+      <div class="chips" role="group" aria-labelledby="chips-title">
+        <p id="chips-title" class="chips__title">Not sure what to type? Tap one of these.</p>
+        <ul class="chips__list" id="chips-list"></ul>
+      </div>
+      <p id="engine-status" class="status" role="status"><span class="spinner" aria-hidden="true"></span><span id="engine-status-text">Getting HelpMate ready. This can take a few seconds the first time.</span></p>
+    </section>
+
+    <section id="results" class="results" aria-labelledby="results-title" hidden>
+      <h2 id="results-title" class="results__title">Here's what I found</h2>
+      <div id="results-live" aria-live="polite">
+        <div id="results-notices"></div>
+        <h3 class="visually-hidden">What I understood</h3>
+        <div id="understood"></div>
+      </div>
+      <section id="answer" class="answer" aria-labelledby="answer-title" hidden>
+        <h3 id="answer-title" class="answer__title"></h3>
+        <p id="answer-summary" class="answer__summary"></p>
+        <p id="answer-topics-wrap">Topics: <span class="badge badge--spacy" title="Made by spaCy when the site was built"><span>spaCy</span><span class="visually-hidden">, made by spaCy when the site was built</span></span></p>
+        <ul class="tags" id="answer-tags"></ul>
+        <h4>How would you like your help?</h4>
+        <div id="format-buttons" class="formats" role="group" aria-label="Choose how you want help">
+        <button class="format-btn format-btn--see" type="button" data-format="see_it" aria-pressed="false" aria-controls="format-panel">
+          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>See it</span><span class="format-btn__hint">Steps with pictures</span>
+        </button>
+        <button class="format-btn format-btn--hear" type="button" data-format="hear_it" aria-pressed="false" aria-controls="format-panel">
+          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg>
+          <span>Hear it</span><span class="format-btn__hint">I'll read it to you</span>
+        </button>
+        <button class="format-btn format-btn--try" type="button" data-format="try_it" aria-pressed="false" aria-controls="format-panel">
+          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></svg>
+          <span>Try it</span><span class="format-btn__hint">Tick off each step</span>
+        </button>
+        <button class="format-btn format-btn--read" type="button" data-format="read_it" aria-pressed="false" aria-controls="format-panel">
+          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+          <span>Read it</span><span class="format-btn__hint">A checklist to print</span>
+        </button>
+        </div>
+        <div id="format-panel" class="format-panel" data-format="see_it" tabindex="-1" role="region" aria-label="Your help"></div>
+        <p id="help-note" class="help-note"></p>
+        <div class="learn-cta">
+          <p class="learn-cta__text">Want to understand this better? Try the 10-step mini-course.</p>
+          <button id="learn-open" class="btn btn--secondary" type="button" aria-haspopup="dialog" aria-controls="learn-panel">Learn more</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="rating" class="card rating" aria-labelledby="rating-title" hidden>
+      <h2 id="rating-title" class="rating__title">Did this help?</h2>
+      <p class="rating__privacy">Please don't include personal details. Your rating helps HelpMate get better each time it is rebuilt.</p>
+      <form id="rating-form" name="rating" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="rating">
+        <input type="hidden" name="question" value="">
+        <input type="hidden" name="category" value="">
+        <input type="hidden" name="format" value="">
+        <input type="hidden" name="model_generated_at" value="">
+        <p class="honeypot"><label>Don't fill this in <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <fieldset class="stars">
+          <legend class="stars__legend">How would you rate this help?</legend>
+          <div class="stars__row">
+            <input class="stars__input" type="radio" id="star-5" name="stars" value="5" required>
+            <label class="stars__label" for="star-5"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg><span class="visually-hidden">5 stars</span></label>
+            <input class="stars__input" type="radio" id="star-4" name="stars" value="4" required>
+            <label class="stars__label" for="star-4"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg><span class="visually-hidden">4 stars</span></label>
+            <input class="stars__input" type="radio" id="star-3" name="stars" value="3" required>
+            <label class="stars__label" for="star-3"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg><span class="visually-hidden">3 stars</span></label>
+            <input class="stars__input" type="radio" id="star-2" name="stars" value="2" required>
+            <label class="stars__label" for="star-2"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg><span class="visually-hidden">2 stars</span></label>
+            <input class="stars__input" type="radio" id="star-1" name="stars" value="1" required>
+            <label class="stars__label" for="star-1"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg><span class="visually-hidden">1 star</span></label>
+          </div>
+          <p id="stars-value" class="stars__value" aria-live="polite"></p>
+        </fieldset>
+        <div class="field">
+          <label class="field__label" for="comment">Anything to add? (optional)</label>
+          <textarea id="comment" class="field__input" name="comment" maxlength="500" rows="3"></textarea>
+          <p class="field__help">Up to 500 characters.</p>
+        </div>
+        <div id="rating-message"></div>
+        <button class="btn btn--primary" type="submit">Send my rating</button>
+      </form>
+      <div id="rating-thanks" class="thanks" role="status" tabindex="-1" hidden><p>Thank you! Your rating will help the next version of HelpMate.</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="site-footer__links">
+        <li><a href="index.html">Get help</a></li>
+        <li><a href="insights.html">Insights</a></li>
+      </ul>
+      <p class="site-footer__note">HelpMate is a study project. It gives general self-help tips, not professional repair.</p>
+      <p class="site-footer__note">Made with NLTK, spaCy and a small neural network.
+        <span class="badge badge--nltk">NLTK</span> <span class="badge badge--spacy">spaCy</span> <span class="badge badge--nn">Neural network</span></p>
+    </div>
+  </footer>
+
+  <div id="panel-backdrop" class="panel-backdrop"></div>
+  <aside id="learn-panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="learn-title" aria-hidden="true">
+    <header class="panel__head">
+      <h2 id="learn-title" class="panel__title">10-step mini-course</h2>
+      <button id="learn-close" class="panel__close" type="button"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Close</span></button>
+    </header>
+    <div id="learn-body" class="panel__body"></div>
+    <div class="panel__foot">
+      <button id="learn-back" class="btn btn--secondary" type="button">Back</button>
+      <button id="learn-next" class="btn btn--primary" type="button">Next step</button>
+    </div>
+  </aside>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

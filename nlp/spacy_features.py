@@ -26,7 +26,8 @@ JS_REGEX: list[dict] = [
     {"label": "ERROR_CODE", "pattern": r"\b[a-z]+(?:_[a-z0-9]+){2,}\b", "flags": "i"},
 ]
 
-NEGATION_WORDS = frozenset({"not", "n't", "never", "no", "cannot", "nor"})
+# "nt" because spaCy splits "wont" into "wo" + "nt" (no apostrophe), "dont" into "do" + "nt".
+NEGATION_WORDS = frozenset({"not", "n't", "nt", "never", "no", "cannot", "nor"})
 # Adjectives that are not problems unless negated ("the wifi is fine on my phone").
 GOOD_WORDS = frozenset({"fine", "good", "great", "ok", "okay", "fast", "new", "ready", "happy", "easy",
                         "better", "best", "nice", "sure", "available", "free", "possible", "able"})
@@ -35,7 +36,14 @@ PROBLEM_VERBS = frozenset({
     "fail", "crash", "freeze", "hang", "stop", "drop", "disconnect", "lose", "lag", "jam", "break", "die",
     "disappear", "vanish", "restart", "reboot", "flicker", "glitch", "stall", "overheat", "forget", "lock",
     "block", "miss", "stutter", "buffer", "timeout", "error",
+    "close", "drain", "spin", "wipe", "shut", "quit", "corrupt", "beep", "slow", "shutdown", "bounce",
 })
+# Problem verbs that are also things a user does ("how do I close the app"): skipped after I/we/you.
+ACTION_VERBS = frozenset({"close", "quit", "wipe", "shut", "restart", "reboot", "lock", "block", "stop",
+                          "spin", "drain", "slow"})
+USER_PRONOUNS = frozenset({"i", "we", "you"})
+REFERENCE_PRONOUNS = frozenset({"it", "they", "them", "this", "that", "which", "these", "those"})
+QUOTE_CHARS = frozenset({'"', "\u201c", "\u201d"})
 # Verbs that take another verb and describe a repeating problem: "keeps dropping" -> "keep drop".
 ASPECT_VERBS = frozenset({"keep", "start", "stop", "continue", "fail", "refuse", "seem", "begin"})
 # Nouns that name a problem: "printer error", "wifi problem", "screen freeze".
@@ -143,6 +151,50 @@ def _thing_for(tok, ents, allow_loose: bool):
     return _first_thing(pobjs, ents)
 
 
+def _in_quotes(tok) -> bool:
+    """True when tok sits between a pair of double quotes (error text such as: Gmail says "couldn't send")."""
+    n = sum(1 for t in tok.doc[:tok.i] if t.text in QUOTE_CHARS)
+    return n % 2 == 1 and any(t.text in QUOTE_CHARS for t in tok.doc[tok.i + 1:])
+
+
+def _nearest_entity(tok, ents):
+    """Name of the DEVICE/APP/OS entity closest to tok (ties go to the one before it), or None."""
+    best, best_d = None, None
+    for ent in set(ents.values()):
+        if ent.label_ not in ("DEVICE", "APP", "OS"):
+            continue
+        if tok.i >= ent.end:
+            d, order = tok.i - ent.end + 1, 0
+        elif tok.i < ent.start:
+            d, order = ent.start - tok.i, 1
+        else:
+            d, order = 0, 0
+        if best is None or (d, order) < best_d:
+            best, best_d = ent, (d, order)
+    return best.root.lemma_.lower() if best is not None else None
+
+
+def _resolve_thing(tok, ents, loose: bool, neg: bool):
+    """Thing for a problem word. Pronoun or missing subjects ("I can't open it", a quoted
+    "couldn't send") fall back to the nearest DEVICE/APP/OS entity, then to a head verb's subject."""
+    name = _thing_for(tok, ents, loose)
+    if name:
+        return name
+    subj = [c for c in tok.children if c.dep_ in ("nsubj", "nsubjpass")]
+    pron = {c.lower_ for c in subj if c.pos_ == "PRON"}
+    allowed = _in_quotes(tok) or not subj or bool(pron & REFERENCE_PRONOUNS) or (neg and bool(pron))
+    if not allowed:
+        return None
+    name = _nearest_entity(tok, ents)
+    if name:
+        return name
+    for anc in tok.ancestors:
+        name = _first_thing([c for c in anc.children if c.dep_ in ("nsubj", "nsubjpass")], ents)
+        if name:
+            return name
+    return None
+
+
 def _add(out: list, seen: set, thing: str | None, problem: str, negated: bool) -> None:
     if not thing:
         return
@@ -187,13 +239,13 @@ def problems(doc) -> list[dict]:
             adj = adjs[0]
             neg = neg or _is_negated(adj)
             if neg or adj.lower_ not in GOOD_WORDS:
-                _add(out, seen, _thing_for(tok, ents, False), adj.lower_, neg)
+                _add(out, seen, _resolve_thing(tok, ents, False, neg), adj.lower_, neg)
             continue
 
         # 3. noun naming a problem: "printer shows error", "has a problem"
         pn = [c for c in tok.children if c.dep_ in ("dobj", "obj", "attr") and c.lemma_.lower() in PROBLEM_NOUNS]
         if pn:
-            _add(out, seen, _thing_for(tok, ents, False), pn[0].lemma_.lower(), neg)
+            _add(out, seen, _resolve_thing(tok, ents, False, neg), pn[0].lemma_.lower(), neg)
             continue
 
         if tok.pos_ != "VERB" or tok.lemma_ in ("be", "do", "have"):
@@ -204,13 +256,17 @@ def problems(doc) -> list[dict]:
         if tok.lemma_ in ASPECT_VERBS and xcomps:
             x = xcomps[0]
             neg = neg or _is_negated(x)
-            thing = _thing_for(tok, ents, True) or _thing_for(x, ents, True)
+            thing = _resolve_thing(tok, ents, True, neg) or _resolve_thing(x, ents, True, neg)
             _add(out, seen, thing, f"{tok.lemma_.lower()} {x.lemma_.lower()}", neg)
             continue
 
         # 5. plain verb: only when negated or it names a problem ("won't print", "crashed")
-        if neg or tok.lemma_.lower() in PROBLEM_VERBS:
-            _add(out, seen, _thing_for(tok, ents, True), tok.lemma_.lower(), neg)
+        lemma = tok.lemma_.lower()
+        if neg or lemma in PROBLEM_VERBS:
+            user_does_it = any(c.dep_ == "nsubj" and c.lower_ in USER_PRONOUNS for c in tok.children)
+            if not neg and lemma in ACTION_VERBS and user_does_it and not _in_quotes(tok):
+                continue  # "how do I close the app" is an action, not a problem
+            _add(out, seen, _resolve_thing(tok, ents, True, neg), lemma, neg)
 
     # 6. compound problem nouns: "printer error", "wifi problem"
     for tok in doc:

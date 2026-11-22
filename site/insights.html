@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insights - HelpMate</title>
+  <meta name="description" content="What people ask HelpMate, how answers are rated, and how well the helper works.">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container container--wide site-header__inner">
+      <a class="brand" href="index.html">
+        <img class="brand__mark" src="assets/brand/helpmate-mark.svg" alt="" width="44" height="44">
+        <span class="brand__name">HelpMate</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-link" href="index.html">Get help</a>
+        <a class="nav-link" href="insights.html" aria-current="page">Insights</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container container--wide" tabindex="-1">
+    <div class="page-head">
+      <h1>What people ask HelpMate</h1>
+      <p class="page-head__lead">These charts update each time HelpMate is rebuilt. Each one says which tool made it.</p>
+    </div>
+
+    <div id="insights-status" class="status" role="status">
+      <span class="spinner" aria-hidden="true"></span><span>Loading the charts...</span>
+    </div>
+    <div id="insights-notes"></div>
+
+    <section class="stat-grid" aria-label="Key numbers">
+      <div class="stat"><span class="stat__value" id="stat-questions">-</span><span class="stat__label">questions studied (NLTK)</span></div>
+      <div class="stat"><span class="stat__value" id="stat-ratings">-</span><span class="stat__label">ratings received (NLTK)</span></div>
+      <div class="stat"><span class="stat__value" id="stat-accuracy">-</span><span class="stat__label">topics guessed right (Neural network)</span></div>
+      <div class="stat"><span class="stat__value" id="stat-frustration">-</span><span class="stat__label">questions that sound frustrated (NLTK)</span></div>
+    </section>
+
+    <div class="insights-grid">
+
+      <section id="chart-words" class="card chart-card" aria-labelledby="chart-words-title">
+        <header class="card__head">
+          <h2 id="chart-words-title" class="card__title">Most common words</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-phrases" class="card chart-card" aria-labelledby="chart-phrases-title">
+        <header class="card__head">
+          <h2 id="chart-phrases-title" class="card__title">Words that often go together</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-categories" class="card chart-card" aria-labelledby="chart-categories-title">
+        <header class="card__head">
+          <h2 id="chart-categories-title" class="card__title">Questions we studied, by topic</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-ratings" class="card chart-card" aria-labelledby="chart-ratings-title">
+        <header class="card__head">
+          <h2 id="chart-ratings-title" class="card__title">Star ratings over time</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-rating-categories" class="card chart-card" aria-labelledby="chart-rating-categories-title">
+        <header class="card__head">
+          <h2 id="chart-rating-categories-title" class="card__title">Stars by topic</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-formats" class="card chart-card" aria-labelledby="chart-formats-title">
+        <header class="card__head">
+          <h2 id="chart-formats-title" class="card__title">Which help format gets the best stars</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-sentiment" class="card chart-card" aria-labelledby="chart-sentiment-title">
+        <header class="card__head">
+          <h2 id="chart-sentiment-title" class="card__title">How people sound in their comments</h2>
+          <span class="badge badge--nltk" title="Made by NLTK when the site was built">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+      <section id="chart-quality" class="chart-card--wide" aria-labelledby="chart-quality-title">
+        <h2 id="chart-quality-title">How well does HelpMate work?</h2>
+        <p class="page-head__lead">These numbers come from questions the helper has never seen. They are an honest check, so mistakes are shown too.</p>
+        <div class="insights-grid">
+
+          <section id="chart-nn" class="card chart-card" aria-labelledby="chart-nn-title">
+            <header class="card__head">
+              <h3 id="chart-nn-title" class="card__title">Sorting questions into topics</h3>
+              <span class="badge badge--nn" title="Made by HelpMate's neural network">Neural network<span class="visually-hidden">, made by the neural network</span></span>
+            </header>
+            <div class="chart-body"></div>
+          </section>
+
+          <section id="chart-confusion" class="card chart-card" aria-labelledby="chart-confusion-title">
+            <header class="card__head">
+              <h3 id="chart-confusion-title" class="card__title">Where the topic guesses get mixed up</h3>
+              <span class="badge badge--nn" title="Made by HelpMate's neural network">Neural network<span class="visually-hidden">, made by the neural network</span></span>
+            </header>
+            <div class="chart-body"></div>
+          </section>
+
+          <section id="chart-vader" class="card chart-card" aria-labelledby="chart-vader-title">
+            <header class="card__head">
+              <h3 id="chart-vader-title" class="card__title">Spotting frustration</h3>
+              <span class="badge badge--nltk" title="Made by NLTK (VADER)">NLTK<span class="visually-hidden">, made by NLTK</span></span>
+            </header>
+            <div class="chart-body"></div>
+          </section>
+
+          <section id="chart-spacy" class="card chart-card" aria-labelledby="chart-spacy-title">
+            <header class="card__head">
+              <h3 id="chart-spacy-title" class="card__title">Finding devices, apps and problems</h3>
+              <span class="badge badge--spacy" title="Made by spaCy when the site was built">spaCy<span class="visually-hidden">, made by spaCy</span></span>
+            </header>
+            <div class="chart-body"></div>
+          </section>
+
+        </div>
+      </section>
+
+      <section id="chart-errors" class="card chart-card chart-card--wide" aria-labelledby="chart-errors-title">
+        <header class="card__head">
+          <h2 id="chart-errors-title" class="card__title">Where HelpMate gets it wrong</h2>
+        </header>
+        <div class="chart-body"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="site-footer__links">
+        <li><a href="index.html">Get help</a></li>
+        <li><a href="insights.html">Insights</a></li>
+      </ul>
+      <p class="site-footer__note">HelpMate is a study project. It gives general self-help tips, not professional repair.</p>
+      <p class="site-footer__note">Made with NLTK, spaCy and a small neural network.
+        <span class="badge badge--nltk">NLTK</span>
+        <span class="badge badge--spacy">spaCy</span>
+        <span class="badge badge--nn">Neural network</span>
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/insights.js"></script>
+</body>
+</html>

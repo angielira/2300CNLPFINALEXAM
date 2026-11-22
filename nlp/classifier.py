@@ -22,6 +22,12 @@ SIMPLE_STOP = frozenset(
 
 DEFAULT_MIN_CONFIDENCE = 0.45
 
+# Chosen by 5x5-fold CV on the seed TRAIN split only (simple_v1, reports/nlp_quality.md):
+# unigrams + alpha 1e-2 gave CV accuracy 0.780 vs 0.729 for (1, 2) + alpha 1e-3, and kept the
+# "unsure" rate at min_confidence 0.45 about the same (14% vs 12%). Re-check with nltk_clean_v1.
+NGRAM_RANGE = (1, 1)
+MLP_ALPHA = 1e-2
+
 
 def simple_clean(text: str) -> list[str]:
     toks = re.findall(TOKEN_PATTERN, text.replace("’", "'").lower())
@@ -63,11 +69,11 @@ def train(texts, labels, test_texts=None, test_labels=None, tokenizer: str = "nl
 
     vec = TfidfVectorizer(
         tokenizer=get_tokenizer(tokenizer), lowercase=False, token_pattern=None,
-        preprocessor=None, stop_words=None, ngram_range=(1, 2), max_features=2000,
+        preprocessor=None, stop_words=None, ngram_range=NGRAM_RANGE, max_features=2000,
         min_df=1, sublinear_tf=True, norm="l2", smooth_idf=True,
     )
     X = vec.fit_transform(texts)
-    clf = MLPClassifier(hidden_layer_sizes=(64,), solver="lbfgs", alpha=1e-3,
+    clf = MLPClassifier(hidden_layer_sizes=(64,), solver="lbfgs", alpha=MLP_ALPHA,
                         max_iter=500, random_state=42)
     clf.fit(X, labels)
 

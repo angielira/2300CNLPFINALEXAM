@@ -187,6 +187,35 @@ def test_good_adjective_is_not_a_problem(sf, nlp):
     assert sf.problems(nlp("The wifi is fine on my phone")) == []
 
 
+def test_pronoun_subject_uses_nearest_entity(sf, nlp):
+    pairs = sf.problems(nlp("My Outlook will not start and I can't open it"))
+    assert any(p["thing"] == "outlook" and p["negated"] and p["problem"] == "not open" for p in pairs)
+
+
+def test_quoted_error_text(sf, nlp):
+    pairs = sf.problems(nlp('Gmail says "couldn\'t send" every time I attach a photo'))
+    assert any(p["thing"] == "gmail" and p["negated"] and p["problem"].endswith("send") for p in pairs)
+
+
+def test_new_problem_verbs(sf, nlp):
+    pairs = sf.problems(nlp("The Instagram app closes on its own and my phone battery drains fast"))
+    problems = {p["problem"] for p in pairs}
+    assert "close" in problems and "drain" in problems
+
+
+def test_close_as_user_action_is_not_a_problem(sf, nlp):
+    assert sf.problems(nlp("How do I close the Zoom app?")) == []
+
+
+def test_wont_without_apostrophe_is_negated(sf, nlp):
+    pairs = sf.problems(nlp("my hp printer wont print"))
+    assert any(p["thing"] == "printer" and p["negated"] and p["problem"] == "not print" for p in pairs)
+
+
+def test_negation_words_cover_split_wont(sf):
+    assert "nt" in sf.NEGATION_WORDS and {"close", "drain", "spin", "wipe"} <= sf.PROBLEM_VERBS
+
+
 def test_tags(sf, nlp):
     result = sf.tags(nlp("My printers keep jamming and the ink runs out on my Windows laptop"))
     assert result == sorted(set(result))
