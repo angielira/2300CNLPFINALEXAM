@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="HelpMate">
+<rect x="2" y="2" width="52" height="52" rx="14" fill="#2F7BF5"/>
+<rect x="60" y="2" width="52" height="52" rx="14" fill="#FF6A4D"/>
+<path d="M7 100 L3 118 L24 108 Z" fill="#12A889" stroke="#12A889" stroke-width="3" stroke-linejoin="round"/>
+<rect x="2" y="60" width="52" height="52" rx="14" fill="#12A889"/>
+<rect x="60" y="60" width="52" height="52" rx="14" fill="#8A5CF6"/>
+<path d="M13 28 Q28 14 43 28 Q28 42 13 28 Z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="28" cy="28" r="5" fill="#FFFFFF"/>
+<g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"><line x1="77" y1="24" x2="77" y2="32"/><line x1="83" y1="17" x2="83" y2="39"/><line x1="89" y1="21" x2="89" y2="35"/><line x1="95" y1="25" x2="95" y2="31"/></g>
+<path d="M21 73 L21 98 L27.5 92 L31.5 100.5 L36 98.5 L32 90 L40.5 90 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+<g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"><line x1="74" y1="78" x2="98" y2="78"/><line x1="74" y1="86" x2="98" y2="86"/><line x1="74" y1="94" x2="89" y2="94"/></g>
+</svg>
