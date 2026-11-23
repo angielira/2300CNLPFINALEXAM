@@ -48,7 +48,7 @@ function start() {
     return Promise.reject(new Error("This browser cannot run the smart helper."));
   }
   try {
-    worker = new Worker(new URL("./brain-worker.js", import.meta.url));   // classic worker
+    worker = new Worker(new URL("./brain-worker.js", import.meta.url), { type: "module" });
   } catch (e) {
     return Promise.reject(new Error("The smart helper could not start."));
   }

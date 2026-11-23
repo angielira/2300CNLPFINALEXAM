@@ -1,11 +1,12 @@
-/* HelpMate brain worker (Pip). Classic Web Worker: runs Pyodide (NLTK + NumPy) off the main thread.
+/* HelpMate brain worker (Pip). Module Web Worker: runs Pyodide (NLTK + NumPy) off the main thread.
    Messages in:  {id, type: "init"} | {id, type: "analyze", text}
    Messages out: {id, ok: true, result} | {id, ok: false, error: "plain message"} | {type: "progress", text}
    Everything here is browser-only; Python runs inside Pyodide. spaCy is never used. */
-"use strict";
+// Module worker: Pyodide's ES-module build loads reliably here (importScripts of pyodide.js was
+// refused by the browser on the live site with "failed to load").
+import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v314.0.8/full/pyodide.mjs";
 
 var PYODIDE_VERSION = "v314.0.8";
-var PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/" + PYODIDE_VERSION + "/full/pyodide.js";
 var SITE_ROOT = new URL("../", self.location.href);   // worker lives in site/js/
 
 var pyodide = null;
@@ -64,9 +65,6 @@ function writeFile(path, data) {
 }
 
 async function init() {
-  if (typeof loadPyodide !== "function") {
-    importScripts(PYODIDE_URL);                       // defines loadPyodide
-  }
   say("Starting the Python engine...");
   pyodide = await loadPyodide();
   say("Loading the language tools...");
