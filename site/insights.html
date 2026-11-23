@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/design-tokens.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -28,11 +28,18 @@
     </div>
   </header>
 
-  <main id="main" class="container container--wide" tabindex="-1">
-    <div class="page-head">
-      <h1>What people ask HelpMate</h1>
-      <p class="page-head__lead">These charts update each time HelpMate is rebuilt. Each one says which tool made it.</p>
+  <main id="main" tabindex="-1">
+    <div class="page-hero on-dark">
+      <div class="hero__art" aria-hidden="true">
+        <span class="tile tile--blue t1"></span><span class="tile tile--coral t2"></span><span class="tile tile--teal t3"></span><span class="tile tile--purple t4"></span>
+      </div>
+      <div class="container container--wide page-head">
+        <p class="hero__eyebrow"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Insights</p>
+        <h1>What people ask HelpMate</h1>
+        <p class="page-head__lead">These charts update each time HelpMate is rebuilt. Each one says which tool made it.</p>
+      </div>
     </div>
+    <div class="container container--wide page-body">
 
     <div id="insights-status" class="status" role="status">
       <span class="spinner" aria-hidden="true"></span><span>Loading the charts...</span>
@@ -152,20 +159,28 @@
       </section>
 
     </div>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <ul class="site-footer__links">
-        <li><a href="index.html">Get help</a></li>
-        <li><a href="insights.html">Insights</a></li>
-      </ul>
-      <p class="site-footer__note">HelpMate is a study project. It gives general self-help tips, not professional repair.</p>
-      <p class="site-footer__note">Made with NLTK, spaCy and a small neural network.
-        <span class="badge badge--nltk">NLTK</span>
-        <span class="badge badge--spacy">spaCy</span>
-        <span class="badge badge--nn">Neural network</span>
-      </p>
+    <div class="site-footer__stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="container container--wide site-footer__grid">
+      <div class="site-footer__about">
+        <a class="brand brand--footer" href="index.html"><img class="brand__mark" src="assets/brand/helpmate-mark.svg" alt="" width="44" height="44"><span class="brand__name">HelpMate</span></a>
+        <p class="site-footer__note">A friendly self-help coach for everyday tech problems. One small step at a time.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Footer">
+        <h2 class="site-footer__heading">Explore</h2>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Get help</a></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__heading">Made with</h2>
+        <p class="site-footer__badges"><span class="badge badge--nltk">NLTK</span> <span class="badge badge--spacy">spaCy</span> <span class="badge badge--nn">Neural network</span></p>
+        <p class="site-footer__note">HelpMate is a study project. It gives general self-help tips, not professional repair.</p>
+      </div>
     </div>
   </footer>
 

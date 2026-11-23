@@ -111,6 +111,13 @@
   --chart-5: var(--amber-ink);
   --chart-grid: #CBBFAE;         /* decorative gridlines */
 
+  /* ---- Refresh v2: dark hero, display font, soft text on navy ---- */
+  --gold: #FFD166;                   /* gold on navy 11.08; navy on gold 11.08 */
+  --on-dark-soft: #CBD3E6;           /* secondary text on navy */
+  --navy-2: #1E3158;                 /* decorative shapes on navy */
+  --font-display: "Fredoka", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --shadow-glow: 0 0 0 6px rgba(47, 123, 245, 0.16), 0 18px 40px rgba(8, 14, 30, 0.35);
+
   /* ---- Focus ring (navy on cream 15:1; white version for dark backgrounds) ---- */
   --focus-color: var(--navy);
   --focus-color-on-dark: #FFFFFF;

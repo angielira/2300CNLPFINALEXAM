@@ -69,6 +69,8 @@ PAIRS = [
     ("amber-ink", "white", 3.0), ("focus-color", "bg", 3.0), ("focus-color-on-dark", "navy", 3.0),
     ("chart-1", "white", 3.0), ("chart-2", "white", 3.0), ("chart-3", "white", 3.0),
     ("chart-4", "white", 3.0), ("chart-5", "white", 3.0),
+    ("gold", "navy", 4.5), ("navy", "gold", 4.5), ("on-dark-soft", "navy", 4.5),
+    ("on-dark-soft", "navy-2", 4.5), ("white", "navy-2", 4.5), ("gold", "navy-2", 4.5),
     ("blue", "bg", 3.0),                                       # large text / icon only
 ]
 
