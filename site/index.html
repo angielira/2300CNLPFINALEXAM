@@ -15,7 +15,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <div class="container container--wide site-header__inner">
+    <div class="container container--max site-header__inner">
       <a class="brand" href="index.html"><img class="brand__mark" src="assets/brand/helpmate-mark.svg" alt="" width="44" height="44"><span class="brand__name">HelpMate</span></a>
       <nav class="site-nav" aria-label="Main">
         <a class="nav-link" href="index.html" aria-current="page">Get help</a>
@@ -25,79 +25,127 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero on-dark" aria-labelledby="hero-title">
-      <div class="hero__art" aria-hidden="true">
-        <span class="tile tile--blue t1"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-        <span class="tile tile--coral t2"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M7 8v8M12 5v14M17 9v6"/></svg></span>
-        <span class="tile tile--teal t3"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M6 4v15l4-3.5 3 6 3-1.5-3-5.5h5z"/></svg></span>
-        <span class="tile tile--purple t4"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></svg></span>
-        <span class="tile tile--blue t5"></span>
-        <span class="tile tile--teal t6"></span>
-        <span class="tile tile--coral t7"></span>
-      </div>
-      <div class="container hero__inner">
-        <p class="hero__eyebrow"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg>Friendly tech help, in plain words</p>
-        <h1 id="hero-title" class="hero__title">Hi! What's giving you <span class="hero__mark">trouble</span> today?</h1>
-        <p class="hero__lead">Tell me in your own words. There are no silly questions, and I'll go one small step at a time.</p>
-        <form id="ask-form" class="ask" novalidate>
-          <label class="ask__label" for="question">Type your question here</label>
-          <textarea id="question" class="ask__input" rows="3" maxlength="300" aria-describedby="question-hint question-error" placeholder="For example: my printer will not print"></textarea>
-          <p id="question-error" class="field__error" hidden></p>
-          <p id="question-hint" class="ask__hint">Please don't include passwords or personal details.</p>
-          <div class="ask__actions">
-            <button id="ask-button" class="btn btn--primary btn--lg" type="submit">Help me with this</button>
-            <span class="ask__count" id="ask-count" aria-live="off">0 of 300</span>
+    <div class="workspace container--max">
+
+      <!-- LEFT: the question -->
+      <aside class="sidebar" aria-label="Ask your question">
+        <section class="side-hero on-dark" aria-labelledby="hero-title">
+          <div class="side-hero__art" aria-hidden="true">
+            <span class="tile tile--blue t1"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="tile tile--coral t2"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M7 8v8M12 5v14M17 9v6"/></svg></span>
+            <span class="tile tile--teal t3"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M6 4v15l4-3.5 3 6 3-1.5-3-5.5h5z"/></svg></span>
+            <span class="tile tile--purple t4"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></svg></span>
           </div>
-        </form>
-      </div>
-    </section>
+          <p class="side-hero__eyebrow"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z"/></svg>Friendly tech help</p>
+          <h1 id="hero-title" class="side-hero__title">What's giving you <span class="hero__mark">trouble</span>?</h1>
+          <p class="side-hero__lead">Tell me in your own words. I'll go one small step at a time.</p>
+          <form id="ask-form" class="ask" novalidate>
+            <label class="ask__label" for="question">Type your question here</label>
+            <textarea id="question" class="ask__input" rows="3" maxlength="300" aria-describedby="question-hint question-error" placeholder="For example: my printer will not print"></textarea>
+            <p id="question-error" class="field__error" hidden></p>
+            <p id="question-hint" class="ask__hint">Please don't include passwords or personal details.</p>
+            <div class="ask__actions">
+              <button id="ask-button" class="btn btn--primary btn--lg" type="submit">Help me with this</button>
+              <span class="ask__count" id="ask-count" aria-live="off">0 of 300</span>
+            </div>
+          </form>
+        </section>
 
-    <div class="container page-body">
-      <div class="chips" role="group" aria-labelledby="chips-title">
-        <p id="chips-title" class="chips__title">Not sure what to type? Tap one of these.</p>
-        <ul class="chips__list" id="chips-list"></ul>
-      </div>
-      <p id="engine-status" class="status" role="status"><span class="spinner" aria-hidden="true"></span><span id="engine-status-text">Getting HelpMate ready. This can take a few seconds the first time.</span></p>
+        <div class="chips" role="group" aria-labelledby="chips-title">
+          <p id="chips-title" class="chips__title">Not sure what to type? Tap one.</p>
+          <ul class="chips__list" id="chips-list"></ul>
+        </div>
+        <p id="engine-status" class="status" role="status"><span class="spinner" aria-hidden="true"></span><span id="engine-status-text">Getting HelpMate ready. This can take a few seconds the first time.</span></p>
+      </aside>
 
-    <section id="results" class="results" aria-labelledby="results-title" hidden>
-      <h2 id="results-title" class="results__title">Here's what I found</h2>
-      <div id="results-live" aria-live="polite">
-        <div id="results-notices"></div>
-        <h3 class="visually-hidden">What I understood</h3>
-        <div id="understood"></div>
-      </div>
-      <section id="answer" class="answer" aria-labelledby="answer-title" hidden>
-        <h3 id="answer-title" class="answer__title"></h3>
-        <p id="answer-summary" class="answer__summary"></p>
-        <p id="answer-topics-wrap">Topics: <span class="badge badge--spacy" title="Made by spaCy when the site was built"><span>spaCy</span><span class="visually-hidden">, made by spaCy when the site was built</span></span></p>
-        <ul class="tags" id="answer-tags"></ul>
-        <h4>How would you like your help?</h4>
-        <div id="format-buttons" class="formats" role="group" aria-label="Choose how you want help">
-        <button class="format-btn format-btn--see" type="button" data-format="see_it" aria-pressed="false" aria-controls="format-panel">
-          <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-          <span>See it</span><span class="format-btn__hint">Steps with pictures</span>
-        </button>
-        <button class="format-btn format-btn--hear" type="button" data-format="hear_it" aria-pressed="false" aria-controls="format-panel">
-          <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></span>
-          <span>Hear it</span><span class="format-btn__hint">I'll read it to you</span>
-        </button>
-        <button class="format-btn format-btn--try" type="button" data-format="try_it" aria-pressed="false" aria-controls="format-panel">
-          <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></svg></span>
-          <span>Try it</span><span class="format-btn__hint">Tick off each step</span>
-        </button>
-        <button class="format-btn format-btn--read" type="button" data-format="read_it" aria-pressed="false" aria-controls="format-panel">
-          <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span>
-          <span>Read it</span><span class="format-btn__hint">A checklist to print</span>
-        </button>
-        </div>
-        <div id="format-panel" class="format-panel" data-format="see_it" tabindex="-1" role="region" aria-label="Your help"></div>
-        <p id="help-note" class="help-note"></p>
-        <div class="learn-cta">
-          <p class="learn-cta__text">Want to understand this better? Try the 10-step mini-course.</p>
-          <button id="learn-open" class="btn btn--secondary" type="button" aria-haspopup="dialog" aria-controls="learn-panel">Learn more</button>
-        </div>
-      </section>
-    </section>
+      <!-- RIGHT: the answer and the training -->
+      <div class="stage">
+        <section id="empty-state" class="empty" aria-labelledby="empty-title">
+          <div class="empty__tiles" aria-hidden="true">
+            <span class="tile-static tile--blue"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="tile-static tile--coral"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></span>
+            <span class="tile-static tile--teal"><svg class="icon" focusable="false" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></svg></span>
+            <span class="tile-static tile--purple"><svg class="icon" focusable="false" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span>
+          </div>
+          <h2 id="empty-title" class="empty__title">Your answer will appear here</h2>
+          <p class="empty__lead">Type your question on the left. I'll show you what I understood, then give you help in the way you like best.</p>
+          <ul class="empty__formats">
+            <li class="empty__format empty__format--see"><strong>See it</strong><span>Numbered steps with pictures</span></li>
+            <li class="empty__format empty__format--hear"><strong>Hear it</strong><span>I read the steps out loud to you</span></li>
+            <li class="empty__format empty__format--try"><strong>Try it</strong><span>Tick off each step as you go</span></li>
+            <li class="empty__format empty__format--read"><strong>Read it</strong><span>A checklist you can print</span></li>
+          </ul>
+          <div class="empty__course">
+            <h3 class="empty__course-title">Want to learn more? Try a 10-step course</h3>
+            <p>Every topic has a short course with quick questions and a badge to earn. Your progress is saved on this device.</p>
+          </div>
+          <p class="empty__made">Made with <span class="badge badge--nltk">NLTK</span> <span class="badge badge--spacy">spaCy</span> <span class="badge badge--nn">Neural network</span> <span class="visually-hidden">Each result says which one made it.</span></p>
+        </section>
+
+        <section id="results" class="results" aria-labelledby="results-title" hidden>
+          <h2 id="results-title" class="results__title">Here's what I found</h2>
+          <p id="results-question" class="results__question"></p>
+          <div id="results-live" aria-live="polite">
+            <div id="results-notices"></div>
+            <h3 class="visually-hidden">What I understood</h3>
+            <div id="understood"></div>
+          </div>
+          <section id="answer" class="answer" aria-labelledby="answer-title" hidden>
+            <header class="answer__head">
+              <h3 id="answer-title" class="answer__title"></h3>
+              <p id="answer-summary" class="answer__summary"></p>
+              <div class="answer__topics">
+                <span class="answer__topics-label">Topics <span class="badge badge--spacy" title="Made by spaCy when the site was built"><span>spaCy</span><span class="visually-hidden">, made by spaCy when the site was built</span></span></span>
+                <ul class="tags" id="answer-tags"></ul>
+              </div>
+            </header>
+
+            <div class="tabs" role="tablist" aria-label="Answer or course">
+              <button id="tab-answer" class="tab" type="button" role="tab" aria-selected="true" aria-controls="answer-pane">Your answer</button>
+              <button id="tab-course" class="tab tab--course" type="button" role="tab" aria-selected="false" aria-controls="learn-panel" tabindex="-1">10-step course <span id="tab-course-progress" class="tab__progress"></span></button>
+            </div>
+
+            <div id="answer-pane" class="answer-pane" role="tabpanel" aria-labelledby="tab-answer">
+              <h4>How would you like your help?</h4>
+              <div id="format-buttons" class="formats" role="group" aria-label="Choose how you want help">
+              <button class="format-btn format-btn--see" type="button" data-format="see_it" aria-pressed="false" aria-controls="format-panel">
+                <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                <span>See it</span><span class="format-btn__hint">Steps with pictures</span>
+              </button>
+              <button class="format-btn format-btn--hear" type="button" data-format="hear_it" aria-pressed="false" aria-controls="format-panel">
+                <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></span>
+                <span>Hear it</span><span class="format-btn__hint">I'll read it to you</span>
+              </button>
+              <button class="format-btn format-btn--try" type="button" data-format="try_it" aria-pressed="false" aria-controls="format-panel">
+                <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></svg></span>
+                <span>Try it</span><span class="format-btn__hint">Tick off each step</span>
+              </button>
+              <button class="format-btn format-btn--read" type="button" data-format="read_it" aria-pressed="false" aria-controls="format-panel">
+                <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span>
+                <span>Read it</span><span class="format-btn__hint">A checklist to print</span>
+              </button>
+              </div>
+              <div id="format-panel" class="format-panel" data-format="see_it" tabindex="-1" role="region" aria-label="Your help"></div>
+              <p id="help-note" class="help-note"></p>
+              <div class="learn-cta">
+                <p class="learn-cta__text">Want to understand this better? Try the 10-step mini-course. <span id="learn-cta-progress" class="learn-cta__progress"></span></p>
+                <button id="learn-open" class="btn btn--secondary" type="button" aria-controls="learn-panel">Start the course</button>
+              </div>
+            </div>
+
+            <section id="learn-panel" class="course" role="tabpanel" aria-labelledby="tab-course" hidden>
+              <header class="course__head">
+                <h4 id="learn-title" class="course__title" tabindex="-1">10-step mini-course</h4>
+                <button id="learn-close" class="course__close" type="button"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span>Back to your answer</span></button>
+              </header>
+              <div id="learn-body" class="course__body"></div>
+              <div class="course__nav panel__foot">
+                <button id="learn-back" class="btn btn--secondary" type="button">Back</button>
+                <button id="learn-next" class="btn btn--primary" type="button">Next step</button>
+              </div>
+            </section>
+          </section>
+        </section>
 
     <section id="rating" class="card rating" aria-labelledby="rating-title" hidden>
       <h2 id="rating-title" class="rating__title">Did this help?</h2>
@@ -135,12 +183,13 @@
       </form>
       <div id="rating-thanks" class="thanks" role="status" tabindex="-1" hidden><p>Thank you! Your rating will help the next version of HelpMate.</p></div>
     </section>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-    <div class="container container--wide site-footer__grid">
+    <div class="container container--max site-footer__grid">
       <div class="site-footer__about">
         <a class="brand brand--footer" href="index.html"><img class="brand__mark" src="assets/brand/helpmate-mark.svg" alt="" width="44" height="44"><span class="brand__name">HelpMate</span></a>
         <p class="site-footer__note">A friendly self-help coach for everyday tech problems. One small step at a time.</p>
@@ -159,19 +208,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="panel-backdrop" class="panel-backdrop"></div>
-  <aside id="learn-panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="learn-title" aria-hidden="true">
-    <header class="panel__head">
-      <h2 id="learn-title" class="panel__title">10-step mini-course</h2>
-      <button id="learn-close" class="panel__close" type="button"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Close</span></button>
-    </header>
-    <div id="learn-body" class="panel__body"></div>
-    <div class="panel__foot">
-      <button id="learn-back" class="btn btn--secondary" type="button">Back</button>
-      <button id="learn-next" class="btn btn--primary" type="button">Next step</button>
-    </div>
-  </aside>
 
   <script type="module" src="js/app.js"></script>
 </body>

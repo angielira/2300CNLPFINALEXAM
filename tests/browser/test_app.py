@@ -83,34 +83,83 @@ def test_format_buttons_switch_and_hear_controls(loaded):
         assert panel.locator('[data-action="stop"]').count() == 1
 
 
-def test_side_panel_open_close_and_progress_persists(loaded, base_url):
+def test_course_tab_open_close_and_progress_persists(loaded, base_url):
     page, _ = loaded
     ask(page, "my printer wont print!!")
-    panel = page.locator("#learn-panel")
-    assert panel.get_attribute("aria-hidden") == "true"
+    course = page.locator("#learn-panel")
+    assert course.is_hidden()
+    assert page.locator("#tab-answer").get_attribute("aria-selected") == "true"
     page.click("#learn-open")
-    page.wait_for_function("document.getElementById('learn-panel').getAttribute('aria-hidden') === null")
-    assert "is-open" in panel.get_attribute("class")
-    radios = panel.locator('input[name="check"]')
+    assert course.is_visible()
+    assert page.locator("#tab-course").get_attribute("aria-selected") == "true"
+    assert page.locator("#answer-pane").is_hidden()
+    # focus moves to the course heading, and the course sits in the results column (inline, not a dialog)
+    assert page.evaluate("document.activeElement.id") == "learn-title"
+    assert page.evaluate("document.getElementById('learn-panel').closest('#results') !== null")
+    assert page.locator("#learn-panel").get_attribute("aria-modal") is None
+    radios = course.locator('input[name="check"]')
     assert radios.count() >= 2
-    # pick each choice until the quiz is marked done
     page.locator("#learn-panel .quiz label").first.click()
     page.get_by_role("button", name="Check my answer").click()
     page.wait_for_timeout(200)
     stored = page.evaluate("localStorage.getItem('helpmate.progress.v1')")
     assert stored and '"done":[1]' in stored.replace(" ", "")
-    page.keyboard.press("Escape")
-    assert panel.get_attribute("aria-hidden") == "true"
-    # reload: progress remains and is shown in the panel
+    assert "1 of" in page.locator("#tab-course-progress").inner_text()
+    # step path, progress bar and medals are all visible inline
+    assert page.locator("#learn-panel .dots .dot").count() == 10
+    assert page.locator("#learn-panel .medals .medal").count() >= 1
+    # step path buttons work
+    page.locator("#learn-panel .dot").nth(2).click()
+    assert "step 3 of" in page.locator("#learn-panel .lesson__kicker").inner_text().lower()
+    # Back to answer returns focus to the button that opened the course
+    page.click("#learn-close")
+    assert course.is_hidden() and page.locator("#answer-pane").is_visible()
+    assert page.evaluate("document.activeElement.id") == "learn-open"
+    # reload: progress remains and is shown in the course
     page.reload()
     page.wait_for_load_state("networkidle")
     assert '"done":[1]' in page.evaluate("localStorage.getItem('helpmate.progress.v1')").replace(" ", "")
     ask(page, "my printer wont print!!")
-    page.click("#learn-open")
+    page.click("#tab-course")
     bar = page.locator('#learn-panel [role="progressbar"]')
     assert bar.get_attribute("aria-valuenow") == "1"
-    page.click("#learn-close")
-    assert panel.get_attribute("aria-hidden") == "true"
+    page.click("#tab-answer")
+    assert course.is_hidden()
+
+
+def test_tabs_keyboard_arrows(loaded):
+    page, _ = loaded
+    ask(page, "my printer wont print!!")
+    page.locator("#tab-answer").focus()
+    page.keyboard.press("ArrowRight")
+    assert page.locator("#tab-course").get_attribute("aria-selected") == "true"
+    assert page.evaluate("document.activeElement.id") == "tab-course"
+    page.keyboard.press("ArrowLeft")
+    assert page.locator("#tab-answer").get_attribute("aria-selected") == "true"
+    assert page.locator("#learn-panel").is_hidden()
+
+
+def test_two_column_workspace_on_desktop(base_url, make_page):
+    page, _ = make_page(width=1280, height=900)
+    page.goto(base_url + "/index.html")
+    page.wait_for_load_state("networkidle")
+    box = lambda sel: page.evaluate(f"(() => {{ const r = document.querySelector('{sel}').getBoundingClientRect(); return [r.left, r.top, r.width]; }})()")
+    side, stage = box(".sidebar"), box(".stage")
+    assert side[2] <= 400 and stage[2] > side[2] * 2          # question column is the thinner one
+    assert stage[0] > side[0] + side[2] - 1 and abs(stage[1] - side[1]) < 30   # side by side
+    assert page.locator("#empty-state").is_visible() and page.locator("#results").is_hidden()
+    ask(page, "my printer wont print!!")
+    assert page.locator("#empty-state").is_hidden()
+    assert page.locator("#question").is_visible() and page.locator("#answer").is_visible()
+
+
+def test_stacked_below_960(base_url, make_page):
+    page, _ = make_page(width=800, height=900)
+    page.goto(base_url + "/index.html")
+    page.wait_for_load_state("networkidle")
+    side = page.evaluate("document.querySelector('.sidebar').getBoundingClientRect().bottom")
+    stage = page.evaluate("document.querySelector('.stage').getBoundingClientRect().top")
+    assert stage >= side - 1
 
 
 def test_rating_form_static_html_has_netlify_fields():
@@ -211,7 +260,7 @@ def test_accessibility_basics(loaded):
     unlabeled = page.evaluate("""() => [...document.querySelectorAll('input:not([type=hidden]), textarea')].filter(i =>
         !i.labels.length && !i.getAttribute('aria-label')).map(i => i.id || i.name)""")
     assert unlabeled == []
-    small = page.evaluate("""() => [...document.querySelectorAll('#ask-button, .format-btn, #learn-open, .chip, .nav-link, #rating-form button[type=submit]')]
+    small = page.evaluate("""() => [...document.querySelectorAll('#ask-button, .format-btn, #learn-open, .chip, .nav-link, .tab, .course__close, #learn-back, #learn-next, #rating-form button[type=submit]')]
         .filter(b => b.offsetParent !== null).map(b => { const r = b.getBoundingClientRect();
         return {t: (b.innerText || '').trim().slice(0, 20), w: Math.round(r.width), h: Math.round(r.height)}; })
         .filter(x => x.w < 44 || x.h < 44)""")

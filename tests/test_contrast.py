@@ -71,6 +71,12 @@ PAIRS = [
     ("chart-4", "white", 3.0), ("chart-5", "white", 3.0),
     ("gold", "navy", 4.5), ("navy", "gold", 4.5), ("on-dark-soft", "navy", 4.5),
     ("on-dark-soft", "navy-2", 4.5), ("white", "navy-2", 4.5), ("gold", "navy-2", 4.5),
+    # workspace v3: tabs, empty state, course banner, learn call-to-action
+    ("white", "navy", 4.5), ("navy", "cream-deep", 4.5), ("text-muted", "cream-deep", 4.5),
+    ("navy", "white", 4.5), ("purple-ink", "white", 4.5), ("blue-ink", "white", 4.5),
+    ("gold", "navy", 4.5), ("on-dark-soft", "navy", 4.5), ("text-on-dark", "navy", 4.5),
+    ("navy", "amber-tint", 4.5), ("text-muted", "white", 4.5), ("text-muted", "bg", 4.5),
+    ("navy", "bg", 4.5), ("navy", "gold", 4.5),
     ("blue", "bg", 3.0),                                       # large text / icon only
 ]
 

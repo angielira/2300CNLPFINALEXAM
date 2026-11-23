@@ -1,20 +1,23 @@
-// "Learn more: 10 steps" side panel: lesson, quiz, progress bar, badge medals.
+// The 10-step mini-course, shown inline in the results panel (a second tab next to the answer):
+// lesson, quiz, progress bar, step path, badge medals.
 import { el, icon, badge, CATEGORY_NAMES } from "./dom.js";
 import { getCategory, markStep, load } from "./progress.js";
 
-const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea, select, [tabindex]:not([tabindex="-1"])';
-
 export function initPanel(getLessons) {
   const panel = document.getElementById("learn-panel");
-  const backdrop = document.getElementById("panel-backdrop");
   const openBtn = document.getElementById("learn-open");
   const closeBtn = document.getElementById("learn-close");
   const body = document.getElementById("learn-body");
   const title = document.getElementById("learn-title");
   const back = document.getElementById("learn-back");
   const next = document.getElementById("learn-next");
-  const outside = () => ["site-header", "main", "site-footer"].map((s) => document.querySelector(s === "main" ? "main" : "." + s)).filter(Boolean);
-  let category = null, step = 1, lesson = null, returnTo = null;
+  const nav = back.parentElement;
+  const tabAnswer = document.getElementById("tab-answer");
+  const tabCourse = document.getElementById("tab-course");
+  const answerPane = document.getElementById("answer-pane");
+  const tabProgress = document.getElementById("tab-course-progress");
+  const ctaProgress = document.getElementById("learn-cta-progress");
+  let category = null, step = 1, lesson = null, isOpen = false;
 
   const lessonFor = (id) => ((getLessons() || {}).items || []).find((l) => l.category === id);
 
@@ -26,6 +29,7 @@ export function initPanel(getLessons) {
     const done = new Set(prog.done);
     title.textContent = lesson.title;
     body.replaceChildren();
+    body.dataset.stepCount = String(total);
 
     const fill = el("span", { class: "progress__fill" });
     fill.style.setProperty("--value", String(Math.round((100 * done.size) / total)));
@@ -71,12 +75,14 @@ export function initPanel(getLessons) {
       el("p", { class: "lesson__idea", text: s.idea }),
       el("p", { class: "lesson__example" }, el("strong", { text: "Think of it like this" }), s.example),
       quiz, check, feedback));
+    body.append(nav);   // Back / Next sit right under the lesson
 
     body.append(el("h3", { text: "Your badges" }), el("ul", { class: "medals", id: "medals" }));
     body.append(el("div", { class: "celebrate", id: "celebrate", role: "status", hidden: true }));
     updateMedals();
     if (prog.badge) celebrate(true);
     back.disabled = step <= 1; next.disabled = step >= total;
+    showProgress(done.size, total);
     if (focusLesson) document.getElementById("lesson-article")?.focus();
   }
 
@@ -86,6 +92,7 @@ export function initPanel(getLessons) {
     const bar = body.querySelector(".progress__track");
     bar.setAttribute("aria-valuenow", String(n));
     bar.querySelector(".progress__fill").style.setProperty("--value", String(Math.round((100 * n) / total)));
+    showProgress(n, total);
     body.querySelectorAll(".dot").forEach((d, i) => {
       const isDone = c.done.includes(i + 1);
       d.classList.toggle("is-done", isDone);
@@ -110,43 +117,67 @@ export function initPanel(getLessons) {
     }));
   }
 
-  function trap(e) {
-    if (e.key === "Escape") { close(); return; }
-    if (e.key !== "Tab") return;
-    const items = [...panel.querySelectorAll(FOCUSABLE)].filter((n) => n.offsetParent !== null || n === document.activeElement);
-    if (!items.length) return;
-    const first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+  function showProgress(n, total) {
+    tabProgress.textContent = `(${n} of ${total})`;
+    ctaProgress.textContent = n ? `You have finished ${n} of ${total} steps.` : "";
+  }
+
+  // Pick the course for a category (called for every new answer). Always shows the answer tab.
+  function setCategory(cat) {
+    category = cat;
+    lesson = lessonFor(cat);
+    const has = !!lesson;
+    tabCourse.disabled = !has; openBtn.disabled = !has;
+    if (has) showProgress(new Set(getCategory(cat).done).size, lesson.steps.length);
+    else { tabProgress.textContent = ""; ctaProgress.textContent = ""; }
+    select("answer", false);
+  }
+
+  function select(which, focus) {
+    const course = which === "course" && !!lesson;
+    isOpen = course;
+    tabAnswer.setAttribute("aria-selected", String(!course));
+    tabCourse.setAttribute("aria-selected", String(course));
+    tabAnswer.tabIndex = course ? -1 : 0;
+    tabCourse.tabIndex = course ? 0 : -1;
+    answerPane.hidden = course;
+    panel.hidden = !course;
+    document.getElementById("results").classList.toggle("is-course", course);
+    if (course) {
+      const done = new Set(getCategory(category).done);
+      step = (lesson.steps.find((x) => !done.has(x.n)) || lesson.steps[0]).n;
+      render();
+      if (focus) title.focus();
+    }
   }
 
   function open(cat) {
-    lesson = lessonFor(cat);
+    if (cat && cat !== category) { category = cat; lesson = lessonFor(cat); }
     if (!lesson) return;
-    category = cat;
-    const done = new Set(getCategory(cat).done);
-    step = (lesson.steps.find((x) => !done.has(x.n)) || lesson.steps[0]).n;
-    returnTo = document.activeElement || openBtn;
-    render();
-    panel.removeAttribute("aria-hidden");
-    panel.classList.add("is-open"); backdrop.classList.add("is-open");
-    document.body.classList.add("has-panel-open");
-    outside().forEach((n) => n.setAttribute("inert", ""));
-    closeBtn.focus();
-    document.addEventListener("keydown", trap);
+    select("course", true);
   }
   function close() {
-    panel.classList.remove("is-open"); backdrop.classList.remove("is-open");
-    panel.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("has-panel-open");
-    outside().forEach((n) => n.removeAttribute("inert"));
-    document.removeEventListener("keydown", trap);
-    (returnTo && document.contains(returnTo) ? returnTo : openBtn).focus();
+    select("answer", false);
+    openBtn.focus();
   }
 
+  tabAnswer.addEventListener("click", () => select("answer", false));
+  tabCourse.addEventListener("click", () => select("course", false));
+  document.querySelector(".tabs").addEventListener("keydown", (e) => {
+    const order = [tabAnswer, tabCourse].filter((t) => !t.disabled);
+    const i = order.indexOf(document.activeElement);
+    if (i < 0) return;
+    let n = null;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") n = order[(i + 1) % order.length];
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = order[(i - 1 + order.length) % order.length];
+    else if (e.key === "Home") n = order[0];
+    else if (e.key === "End") n = order[order.length - 1];
+    if (!n) return;
+    e.preventDefault(); n.focus(); n.click();
+  });
   closeBtn.addEventListener("click", close);
-  backdrop.addEventListener("click", close);
+  openBtn.addEventListener("click", () => open(category));
   back.addEventListener("click", () => { step = Math.max(1, step - 1); render(true); });
   next.addEventListener("click", () => { step = Math.min(lesson.steps.length, step + 1); render(true); });
-  return { open, close };
+  return { open, close, setCategory, isOpen: () => isOpen };
 }

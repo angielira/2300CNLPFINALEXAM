@@ -60,7 +60,7 @@ const answerFor = (cat) => ((data.answers && data.answers.items) || []).find((a)
 function buildChips() {
   const list = $("chips-list");
   let texts = ((data.examples && data.examples.items) || []).filter((e) => e.text.length <= 80).map((e) => e.text);
-  texts = [...new Set(texts)].slice(0, 6);
+  texts = [...new Set(texts)].slice(0, 4);
   if (!texts.length) texts = ["my printer will not print", "I forgot my password", "my computer is so slow", "my wifi keeps dropping"];
   list.replaceChildren(...texts.map((t) => el("li", {}, el("button", { class: "chip", type: "button", text: t, onclick: () => { $("question").value = t; updateCount(); ask(t); $("question").focus(); } }))));
 }
@@ -84,6 +84,9 @@ async function ask(raw) {
   state.question = text;
   const results = $("results");
   results.hidden = false;
+  $("empty-state").hidden = true;
+  $("results-question").textContent = `You asked: “${text}”`;
+  results.classList.remove("is-course");
   $("answer").hidden = true;
   $("results-notices").replaceChildren();
   $("understood").replaceChildren(el("p", { class: "visually-hidden", text: "Thinking about your question..." }),
@@ -105,6 +108,11 @@ async function ask(raw) {
   btn.disabled = false;
   if (failed) setStatus("HelpMate is ready (simple mode).", false); else setStatus("HelpMate is ready.", false);
   show(text, entities, failed ? null : brain);
+  // On a phone the results sit below the question, so bring them into view.
+  if (window.matchMedia("(max-width: 59.99rem)").matches) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    results.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
 }
 
 function show(text, entities, brain) {
@@ -195,7 +203,7 @@ function showAnswer(category, frustrated) {
     hint.querySelector(".popular")?.remove();
     if (b.dataset.format === rank[0]) hint.append(el("span", { class: "popular", text: " (Popular)" }));
   });
-  $("learn-open").disabled = !(data.lessons && (data.lessons.items || []).some((l) => l.category === category));
+  panel.setCategory(category);
   $("answer").hidden = false;
   const pref = getFormatPref();
   selectFormat(FORMATS.includes(pref) ? pref : "see_it", false);
@@ -220,13 +228,12 @@ function selectFormat(format, focus) {
 $("format-buttons").addEventListener("click", (e) => {
   const b = e.target.closest(".format-btn"); if (b) selectFormat(b.dataset.format, true);
 });
-$("learn-open").addEventListener("click", () => panel.open(state.category));
 
 // ---- start ----
 (async function start() {
   await loadData();
   if (!data.answers) {
-    $("results").hidden = false;
+    $("results").hidden = false; $("empty-state").hidden = true;
     $("results-notices").append(notice("info", null, "HelpMate's answers aren't ready yet. Please try again in a minute."));
   }
   setStatus("Getting HelpMate ready. This can take a few seconds the first time.", true);
