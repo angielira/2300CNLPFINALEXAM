@@ -10,7 +10,10 @@ import { initRating } from "./rating.js";
 const $ = (id) => document.getElementById(id);
 const data = { answers: null, lessons: null, patterns: null, examples: null, generated: "" };
 const state = { question: "", category: null, format: "see_it", frustrated: false, dispose: null };
-const BRAIN_TIMEOUT_MS = 30000;
+const BRAIN_TIMEOUT_MS = 20000;        // answering, once the engine is running
+const BRAIN_LOAD_TIMEOUT_MS = 120000;  // first start: Pyodide + NLTK + NumPy can be slow on a first visit
+let brainReady = false;
+let lastBrainError = "";
 const rating = initRating();
 const panel = initPanel(() => data.lessons);
 
@@ -18,12 +21,19 @@ const panel = initPanel(() => data.lessons);
 let brainPromise = null;
 function loadBrain() {
   if (!brainPromise) {
-    brainPromise = import("./brain.js").then(async (m) => {
+    const p = import("./brain.js").then(async (m) => {
       if (typeof m.analyze !== "function") throw new Error("no analyze");
+      if (typeof m.onProgress === "function") m.onProgress((t) => { if (!brainReady) setStatus(t, true); });
       if (typeof m.ready === "function") await m.ready();
+      brainReady = true;
       return m;
     });
-    brainPromise.catch(() => {});
+    brainPromise = p;
+    p.catch((err) => {
+      lastBrainError = (err && err.message) || String(err);
+      console.error("HelpMate smart helper failed to start:", lastBrainError);
+      if (brainPromise === p) brainPromise = null;   // let the next question retry
+    });
   }
   return brainPromise;
 }
@@ -83,8 +93,15 @@ async function ask(raw) {
   if (!data.answers) await loadData();
   const entities = findEntities(text, data.patterns);
   let brain = null, failed = false;
-  try { brain = await withTimeout(loadBrain().then((m) => m.analyze(text)), BRAIN_TIMEOUT_MS); }
-  catch (err) { failed = true; console.info("Browser engine not used:", err && err.message); }
+  try {
+    if (!brainReady) setStatus("Still getting the smart helper ready. The first visit can take up to a minute...", true);
+    const m = await withTimeout(loadBrain(), BRAIN_LOAD_TIMEOUT_MS);
+    brain = await withTimeout(m.analyze(text), BRAIN_TIMEOUT_MS);
+  } catch (err) {
+    failed = true;
+    lastBrainError = (err && err.message) || lastBrainError || "unknown";
+    console.error("Browser engine not used:", lastBrainError);
+  }
   btn.disabled = false;
   if (failed) setStatus("HelpMate is ready (simple mode).", false); else setStatus("HelpMate is ready.", false);
   show(text, entities, failed ? null : brain);
@@ -103,6 +120,7 @@ function show(text, entities, brain) {
   else {
     category = hintCategory(entities);
     notices.append(notice("error", null, "The smart helper couldn't start, so I matched your words instead. The answer may be less exact.", "alert"));
+    if (lastBrainError) notices.append(el("details", { class: "notice-details" }, el("summary", { text: "Technical details" }), el("p", { text: lastBrainError })));
     unsure = !category;
   }
   if (frustrated) notices.append(notice("calm", null, "That sounds frustrating, and that's okay. We'll take it one small step at a time.", "info"));
@@ -212,6 +230,6 @@ $("learn-open").addEventListener("click", () => panel.open(state.category));
     $("results-notices").append(notice("info", null, "HelpMate's answers aren't ready yet. Please try again in a minute."));
   }
   setStatus("Getting HelpMate ready. This can take a few seconds the first time.", true);
-  try { await withTimeout(loadBrain(), BRAIN_TIMEOUT_MS * 2); setStatus("HelpMate is ready.", false); }
+  try { await withTimeout(loadBrain(), BRAIN_LOAD_TIMEOUT_MS); setStatus("HelpMate is ready.", false); }
   catch { setStatus("HelpMate is ready (simple mode: it matches your words).", false); }
 })();

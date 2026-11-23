@@ -7,7 +7,7 @@
    or "Neural network" if the mood step was not available.
    If this rejects, app.js should fall back to the spaCy category_hint and show the "engine failed" notice. */
 
-var LOAD_TIMEOUT_MS = 45000;
+var LOAD_TIMEOUT_MS = 110000;
 var ANALYZE_TIMEOUT_MS = 15000;
 
 var worker = null;
