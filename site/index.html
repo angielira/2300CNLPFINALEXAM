@@ -82,14 +82,9 @@
           <p class="empty__made">Made with <span class="badge badge--nltk">NLTK</span> <span class="badge badge--spacy">spaCy</span> <span class="badge badge--nn">Neural network</span> <span class="visually-hidden">Each result says which one made it.</span></p>
         </section>
 
-        <section id="results" class="results" aria-labelledby="results-title" hidden>
-          <h2 id="results-title" class="results__title">Here's what I found</h2>
+        <section id="results" class="results" aria-labelledby="answer-title" hidden>
           <p id="results-question" class="results__question"></p>
-          <div id="results-live" aria-live="polite">
-            <div id="results-notices"></div>
-            <h3 class="visually-hidden">What I understood</h3>
-            <div id="understood"></div>
-          </div>
+          <div id="results-notices" aria-live="polite"></div>
           <section id="answer" class="answer" aria-labelledby="answer-title" hidden>
             <header class="answer__head">
               <h3 id="answer-title" class="answer__title"></h3>
@@ -145,6 +140,12 @@
               </div>
             </section>
           </section>
+          <div id="results-live" class="results__found" aria-live="polite">
+            <h2 id="results-title" class="results__title">Here's what I found</h2>
+            <p class="results__found-lead">How HelpMate understood your question, and which tool worked out each part.</p>
+            <h3 class="visually-hidden">What I understood</h3>
+            <div id="understood"></div>
+          </div>
         </section>
 
     <section id="rating" class="card rating" aria-labelledby="rating-title" hidden>

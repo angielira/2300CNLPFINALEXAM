@@ -893,3 +893,9 @@ h2, .results__title, .answer__title { font-weight: 600; }
 @media (forced-colors: active) { .tab, .side-hero { border: 2px solid ButtonText; } .tab[aria-selected="true"] { border-color: Highlight; outline: 3px solid Highlight; } .tile-static { border: 2px solid ButtonText; } }
 .side-hero__art .t3, .side-hero__art .t4 { display: none; }
 .side-hero__art .t2 { right: 3.6rem; }
+
+/* v3.1: "Here's what I found" sits below the answer and course */
+.results__found { margin-top: var(--space-8, 3rem); padding-top: var(--space-6, 2rem); border-top: 2px dashed var(--line, #E6DCCB); }
+.results__found .results__title { margin-top: 0; }
+.results__found-lead { margin: 0 0 var(--space-4, 1rem); color: var(--text-muted); }
+.results__question { margin-top: 0; }
