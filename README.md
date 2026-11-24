@@ -11,6 +11,8 @@ An optional 10-step mini-course per topic tracks your progress and awards a badg
 
 The whole site is static and runs on Netlify. There is no backend server and no database.
 
+- **Resources page:** `site/resources.html` (live at /resources.html) lists every link the project relies on: official docs, this repository and the guide.
+
 ## Which library does what
 
 | Library | What it does in HelpMate | Code | Where it runs |
