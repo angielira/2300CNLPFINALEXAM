@@ -5,7 +5,7 @@ description: "Plan HelpMate work as small tasks with an owner, input and output,
 
 # task-planning
 
-Used by: orchestrator, meta-agent
+Used by: orchestrator, meta-agent, product-manager
 
 ## Steps
 1. Read `docs/README.md`, `docs/expert-roster.md` and `docs/06-netlify-architecture.md`.

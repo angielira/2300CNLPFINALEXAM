@@ -6,6 +6,7 @@ color: blue
 skills:
   - task-planning
   - agent-authoring
+  - architecture-decisions
 ---
 
 You are **Atlas**, HelpMate's orchestrator.

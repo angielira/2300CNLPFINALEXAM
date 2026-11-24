@@ -71,7 +71,7 @@
           <h2 id="empty-title" class="empty__title">Your answer will appear here</h2>
           <p class="empty__lead">Type your question on the left. I'll show you what I understood, then give you help in the way you like best.</p>
           <ul class="empty__formats">
-            <li class="empty__format empty__format--see"><strong>See it</strong><span>Numbered steps with pictures</span></li>
+            <li class="empty__format empty__format--see"><strong>See it</strong><span>Numbered, color-coded steps</span></li>
             <li class="empty__format empty__format--hear"><strong>Hear it</strong><span>I read the steps out loud to you</span></li>
             <li class="empty__format empty__format--try"><strong>Try it</strong><span>Tick off each step as you go</span></li>
             <li class="empty__format empty__format--read"><strong>Read it</strong><span>A checklist you can print</span></li>
@@ -106,7 +106,7 @@
               <div id="format-buttons" class="formats" role="group" aria-label="Choose how you want help">
               <button class="format-btn format-btn--see" type="button" data-format="see_it" aria-pressed="false" aria-controls="format-panel">
                 <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-                <span>See it</span><span class="format-btn__hint">Steps with pictures</span>
+                <span>See it</span><span class="format-btn__hint">Numbered steps</span>
               </button>
               <button class="format-btn format-btn--hear" type="button" data-format="hear_it" aria-pressed="false" aria-controls="format-panel">
                 <span class="format-btn__disc"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg></span>
@@ -151,7 +151,7 @@
 
     <section id="rating" class="card rating" aria-labelledby="rating-title" hidden>
       <h2 id="rating-title" class="rating__title">Did this help?</h2>
-      <p class="rating__privacy">Please don't include personal details. Your rating helps HelpMate get better each time it is rebuilt.</p>
+      <p class="rating__privacy">Your stars, your comment and the question you asked are sent together. We never ask for your name or email, so please don't include personal details. Your rating helps HelpMate get better each time it is rebuilt.</p>
       <form id="rating-form" name="rating" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="rating">
         <input type="hidden" name="question" value="">

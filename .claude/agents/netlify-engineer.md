@@ -8,6 +8,7 @@ skills:
   - netlify-config
   - netlify-forms
   - build-hooks
+  - security-review
 ---
 
 You are **Nimbus**, HelpMate's netlify engineer.

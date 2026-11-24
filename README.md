@@ -5,11 +5,21 @@ HelpMate is a friendly self-help IT coach for people who are not technical. You 
 - works out what kind of problem it is (Printer, Email, Wi-Fi & Internet, Passwords & Login, Slow computer, Phone & Apps, Files & Storage, Video calls) with a small **neural network**;
 - notices if you sound frustrated and switches to a calmer tone (**NLTK** VADER);
 - points out the device, app, system or error code you mentioned (**spaCy**);
-- gives help in the format you choose: **See it** (picture steps), **Hear it** (read aloud), **Try it** (a checklist you tick) or **Read it** (a printable page).
+- gives help in the format you choose: **See it** (numbered steps), **Hear it** (read aloud), **Try it** (a checklist you tick) or **Read it** (a printable page).
 
 An optional 10-step mini-course per topic tracks your progress and awards a badge. Star ratings feed back into the app every time it is rebuilt. Every result on screen carries a small label that says which library made it: NLTK, spaCy, Neural network, or both.
 
 The whole site is static and runs on Netlify. There is no backend server and no database.
+
+## Version 1 status
+
+Version 1 is live at https://helpmate2300nlp.netlify.app. 21 of 32 user stories are Met, 10 Partly met, 1 Not met; the live in-browser NLTK + neural-network path was checked in a real Chrome browser on 2026-11-23. Tests: 163 passed, 24 skipped (need NLTK/spaCy locally).
+
+- [docs/version-1-report.md](docs/version-1-report.md): what was built, quality numbers, and what is left for version 2
+- [docs/requirements.md](docs/requirements.md): user stories, acceptance criteria and v1 status (Nora)
+- [docs/architecture.md](docs/architecture.md) and [docs/adr/](docs/adr/README.md): architecture and decision records (Theo)
+- [reports/security.md](reports/security.md): security review (Kai)
+- Resources page: [site/resources.html](site/resources.html), live at https://helpmate2300nlp.netlify.app/resources.html
 
 - **Resources page:** `site/resources.html` (live at /resources.html) lists every link the project relies on: official docs, this repository and the guide.
 
@@ -60,7 +70,7 @@ Full reasoning: [docs/06-netlify-architecture.md](docs/06-netlify-architecture.m
 
 ## The agent team
 
-HelpMate was built by a team of 16 Claude Code agents in `.claude/agents/`, led by Atlas (the orchestrator), with 26 shared skills in `.claude/skills/` and reference notes from official documentation in `knowledge/<agent>/`.
+HelpMate was built by a team of 19 Claude Code agents in `.claude/agents/`, led by Atlas (the orchestrator), with 29 shared skills in `.claude/skills/` and reference notes from official documentation in `knowledge/<agent>/`.
 
 - [CLAUDE.md](CLAUDE.md): project rules and the team table (who does what, which model).
 - [docs/expert-roster.md](docs/expert-roster.md): each expert's responsibilities.

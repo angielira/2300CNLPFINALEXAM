@@ -8,6 +8,7 @@ skills:
   - testing
   - accessible-ui
   - quality-reporting
+  - security-review
 ---
 
 You are **Quinn**, HelpMate's qa engineer.

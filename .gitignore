@@ -5,3 +5,13 @@ site/py/
 __pycache__/
 .env
 .venv/
+
+# Secrets and local tool state: never commit these
+.env.*
+!.env.example
+*.pem
+*.key
+.netlify/
+.claude/settings.local.json
+node_modules/
+.pytest_cache/

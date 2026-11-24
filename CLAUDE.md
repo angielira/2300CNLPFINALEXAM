@@ -8,12 +8,15 @@ HelpMate is a friendly self-help IT coach for non-technical users. A user types 
 - **Netlify Forms** collects ratings; **localStorage** keeps progress; a **build hook** triggers rebuilds.
 - No backend server, no database. spaCy never runs in the browser. Never commit secrets.
 
-## The team (16 agents in `.claude/agents/`)
+## The team (19 agents in `.claude/agents/`)
 
 | Name | Invoke | Model | Job |
 |---|---|---|---|
 | Atlas | `@agent-orchestrator` | opus | Break the HelpMate build into tasks, hand each to the right expert, check every result against the docs, and keep the project moving until it deploys on Netlify. |
 | Forge | `@agent-meta-agent` | opus | Create and improve the team's agents (.claude/agents), skills (.claude/skills) and knowledge folders (knowledge/) so every expert has what it needs. |
+| Nora | `@agent-product-manager` | opus | Write requirements and acceptance criteria, prioritize, and decide what goes into version 1 vs version 2. |
+| Theo | `@agent-software-architect` | opus | Choose and document a simple stack that deploys on Netlify, record ADRs, and guard the build-time/browser boundary. |
+| Kai | `@agent-security-reviewer` | opus | Check that no API keys, tokens or private data are exposed (repo, git history, built site, client code); review Forms privacy, CDN pinning and headers. |
 | Lex | `@agent-nltk-expert` | sonnet | Own every NLTK feature in HelpMate: cleaning questions, detecting frustration with VADER, scoring rating comments, and finding the most common problems and phrases. |
 | Sage | `@agent-spacy-expert` | sonnet | Own every spaCy feature in HelpMate: recognize devices, apps, operating systems and error codes, extract what is broken, and tag answers and lessons. |
 | Synapse | `@agent-ml-engineer` | sonnet | Train, evaluate and export the neural-network question classifier that routes each question to one of 8 IT categories. |
@@ -33,7 +36,7 @@ Start with `@agent-orchestrator`; it delegates to the others. Every agent preloa
 
 ## Repository map
 - `docs/`: research, roster (`expert-roster.md`), agent brains (`agent-brains.md`)
-- `.claude/agents/`, `.claude/skills/`: the team and its 26 skills
+- `.claude/agents/`, `.claude/skills/`: the team and its 29 skills
 - `knowledge/<agent>/`: reference notes from official documentation, with sources
 - `assets/brand/`: logo and favicon
 - To be built: `data/`, `nlp/`, `pipeline/`, `site/`, `tests/`, `reports/`, `netlify.toml`

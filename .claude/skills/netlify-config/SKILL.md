@@ -5,7 +5,7 @@ description: "Write and fix netlify.toml for HelpMate's Python build and static 
 
 # netlify-config
 
-Used by: build-pipeline-engineer, netlify-engineer
+Used by: build-pipeline-engineer, netlify-engineer, software-architect
 
 ## Template
 ```toml

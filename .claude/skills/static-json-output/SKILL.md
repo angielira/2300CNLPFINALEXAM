@@ -5,7 +5,7 @@ description: "Write the static JSON files the HelpMate site reads, with the shar
 
 # static-json-output
 
-Used by: spacy-expert, ml-engineer, build-pipeline-engineer, feedback-loop-engineer
+Used by: spacy-expert, ml-engineer, build-pipeline-engineer, feedback-loop-engineer, software-architect
 
 Binding contract: `reports/plan.md` sections 2 and 3. If anything here differs from the plan, the plan wins.
 

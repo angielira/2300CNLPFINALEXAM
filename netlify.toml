@@ -19,6 +19,10 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Frame protection: no other site may show HelpMate inside a frame (clickjacking).
+    X-Frame-Options = "DENY"
+    # HelpMate never uses the camera, microphone or location ("Hear it" only speaks).
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 # Build output that changes on every rebuild: always check with the server.
 [[headers]]
